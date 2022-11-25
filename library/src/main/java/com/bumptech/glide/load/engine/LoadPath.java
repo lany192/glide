@@ -1,7 +1,7 @@
 package com.bumptech.glide.load.engine;
 
-import androidx.annotation.NonNull;
-import androidx.core.util.Pools.Pool;
+import android.support.annotation.NonNull;
+import android.support.v4.util.Pools.Pool;
 import com.bumptech.glide.load.Options;
 import com.bumptech.glide.load.data.DataRewinder;
 import com.bumptech.glide.util.Preconditions;
@@ -12,11 +12,11 @@ import java.util.List;
 /**
  * For a given {@link com.bumptech.glide.load.data.DataFetcher} for a given data class, attempts to
  * fetch the data and then run it through one or more {@link
- * com.bumptech.glide.load.engine.DecodePath}s.
+ * DecodePath}s.
  *
  * @param <Data> The type of data that will be fetched.
  * @param <ResourceType> The type of intermediate resource that will be decoded within one of the
- *     {@link com.bumptech.glide.load.engine.DecodePath}s.
+ *     {@link DecodePath}s.
  * @param <Transcode> The type of resource that will be returned as the result if the load and one
  *     of the decode paths succeeds.
  */

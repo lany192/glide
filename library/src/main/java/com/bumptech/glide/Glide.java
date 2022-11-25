@@ -8,12 +8,15 @@ import android.graphics.Bitmap;
 import android.os.MessageQueue.IdleHandler;
 import android.util.Log;
 import android.view.View;
-import androidx.annotation.GuardedBy;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.VisibleForTesting;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
+import android.support.annotation.GuardedBy;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.VisibleForTesting;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.util.ArrayMap;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.engine.Engine;
 import com.bumptech.glide.load.engine.bitmap_recycle.ArrayPool;
@@ -82,7 +85,7 @@ public class Glide implements ComponentCallbacks2 {
    * use to store retrieved media and thumbnails.
    *
    * @param context A context.
-   * @see #getPhotoCacheDir(android.content.Context, String)
+   * @see #getPhotoCacheDir(Context, String)
    */
   @Nullable
   public static File getPhotoCacheDir(@NonNull Context context) {
@@ -95,7 +98,7 @@ public class Glide implements ComponentCallbacks2 {
    *
    * @param context A context.
    * @param cacheName The name of the subdirectory in which to store the cache.
-   * @see #getPhotoCacheDir(android.content.Context)
+   * @see #getPhotoCacheDir(Context)
    */
   @Nullable
   public static File getPhotoCacheDir(@NonNull Context context, @NonNull String cacheName) {
@@ -343,16 +346,16 @@ public class Glide implements ComponentCallbacks2 {
   }
 
   /**
-   * Returns the {@link com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool} used to
-   * temporarily store {@link android.graphics.Bitmap}s so they can be reused to avoid garbage
+   * Returns the {@link BitmapPool} used to
+   * temporarily store {@link Bitmap}s so they can be reused to avoid garbage
    * collections.
    *
    * <p>Note - Using this pool directly can lead to undefined behavior and strange drawing errors.
-   * Any {@link android.graphics.Bitmap} added to the pool must not be currently in use in any other
-   * part of the application. Any {@link android.graphics.Bitmap} added to the pool must be removed
+   * Any {@link Bitmap} added to the pool must not be currently in use in any other
+   * part of the application. Any {@link Bitmap} added to the pool must be removed
    * from the pool before it is added a second time.
    *
-   * <p>Note - To make effective use of the pool, any {@link android.graphics.Bitmap} removed from
+   * <p>Note - To make effective use of the pool, any {@link Bitmap} removed from
    * the pool must eventually be re-added. Otherwise the pool will eventually empty and will not
    * serve any useful purpose.
    *
@@ -409,7 +412,7 @@ public class Glide implements ComponentCallbacks2 {
    */
   @SuppressWarnings("unused") // Public API
   public synchronized void preFillBitmapPool(
-      @NonNull PreFillType.Builder... bitmapAttributeBuilders) {
+      @NonNull Builder... bitmapAttributeBuilders) {
     if (bitmapPreFiller == null) {
       DecodeFormat decodeFormat =
           defaultRequestOptionsFactory.build().getOptions().get(Downsampler.DECODE_FORMAT);
@@ -423,7 +426,7 @@ public class Glide implements ComponentCallbacks2 {
    * Clears as much memory as possible.
    *
    * @see android.content.ComponentCallbacks#onLowMemory()
-   * @see android.content.ComponentCallbacks2#onLowMemory()
+   * @see ComponentCallbacks2#onLowMemory()
    */
   public void clearMemory() {
     // Engine asserts this anyway when removing resources, fail faster and consistently
@@ -437,7 +440,7 @@ public class Glide implements ComponentCallbacks2 {
   /**
    * Clears some memory with the exact amount depending on the given level.
    *
-   * @see android.content.ComponentCallbacks2#onTrimMemory(int)
+   * @see ComponentCallbacks2#onTrimMemory(int)
    */
   public void trimMemory(int level) {
     // Engine asserts this anyway when removing resources, fail faster and consistently
@@ -520,17 +523,17 @@ public class Glide implements ComponentCallbacks2 {
    * child fragment. Similarly, if the resource will be used in a view in the parent fragment, the
    * load should be started with {@link #with(android.app.Fragment)} using the parent fragment. In
    * the same vein, if the resource will be used in a view in an activity, the load should be
-   * started with {@link #with(android.app.Activity)}}.
+   * started with {@link #with(Activity)}}.
    *
    * <p>This method is appropriate for resources that will be used outside of the normal fragment or
    * activity lifecycle (For example in services, or for notification thumbnails).
    *
    * @param context Any context, will not be retained.
    * @return A RequestManager for the top level application that can be used to start a load.
-   * @see #with(android.app.Activity)
+   * @see #with(Activity)
    * @see #with(android.app.Fragment)
-   * @see #with(androidx.fragment.app.Fragment)
-   * @see #with(androidx.fragment.app.FragmentActivity)
+   * @see #with(Fragment)
+   * @see #with(FragmentActivity)
    */
   @NonNull
   public static RequestManager with(@NonNull Context context) {
@@ -538,7 +541,7 @@ public class Glide implements ComponentCallbacks2 {
   }
 
   /**
-   * Begin a load with Glide that will be tied to the given {@link android.app.Activity}'s lifecycle
+   * Begin a load with Glide that will be tied to the given {@link Activity}'s lifecycle
    * and that uses the given {@link Activity}'s default options.
    *
    * @param activity The activity to use.
@@ -553,8 +556,8 @@ public class Glide implements ComponentCallbacks2 {
 
   /**
    * Begin a load with Glide that will tied to the give {@link
-   * androidx.fragment.app.FragmentActivity}'s lifecycle and that uses the given {@link
-   * androidx.fragment.app.FragmentActivity}'s default options.
+   * FragmentActivity}'s lifecycle and that uses the given {@link
+   * FragmentActivity}'s default options.
    *
    * @param activity The activity to use.
    * @return A RequestManager for the given FragmentActivity that can be used to start a load.
@@ -565,8 +568,8 @@ public class Glide implements ComponentCallbacks2 {
   }
 
   /**
-   * Begin a load with Glide that will be tied to the given {@link androidx.fragment.app.Fragment}'s
-   * lifecycle and that uses the given {@link androidx.fragment.app.Fragment}'s default options.
+   * Begin a load with Glide that will be tied to the given {@link Fragment}'s
+   * lifecycle and that uses the given {@link Fragment}'s default options.
    *
    * @param fragment The fragment to use.
    * @return A RequestManager for the given Fragment that can be used to start a load.

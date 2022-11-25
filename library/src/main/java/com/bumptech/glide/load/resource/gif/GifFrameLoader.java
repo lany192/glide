@@ -9,9 +9,9 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.os.SystemClock;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.VisibleForTesting;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.VisibleForTesting;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.RequestManager;
@@ -52,7 +52,7 @@ class GifFrameLoader {
   private Bitmap firstFrame;
   private Transformation<Bitmap> transformation;
   private DelayTarget pendingTarget;
-  @Nullable private GifFrameLoader.OnEveryFrameListener onEveryFrameListener;
+  @Nullable private OnEveryFrameListener onEveryFrameListener;
   private int firstFrameSize;
   private int width;
   private int height;
@@ -304,11 +304,11 @@ class GifFrameLoader {
     @Override
     public boolean handleMessage(Message msg) {
       if (msg.what == MSG_DELAY) {
-        GifFrameLoader.DelayTarget target = (DelayTarget) msg.obj;
+        DelayTarget target = (DelayTarget) msg.obj;
         onFrameReady(target);
         return true;
       } else if (msg.what == MSG_CLEAR) {
-        GifFrameLoader.DelayTarget target = (DelayTarget) msg.obj;
+        DelayTarget target = (DelayTarget) msg.obj;
         requestManager.clear(target);
       }
       return false;

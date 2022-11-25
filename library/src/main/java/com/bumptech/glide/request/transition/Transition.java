@@ -2,10 +2,10 @@ package com.bumptech.glide.request.transition;
 
 import android.graphics.drawable.Drawable;
 import android.view.View;
-import androidx.annotation.Nullable;
+import android.support.annotation.Nullable;
 
 /**
- * An interface that allows a transition to be applied to {@link android.view.View}s in {@link
+ * An interface that allows a transition to be applied to {@link View}s in {@link
  * com.bumptech.glide.request.target.Target}s in across resource types. Targets that wrap views will
  * be able to provide all of the necessary arguments and start the transition. Those that do not
  * will be unable to provide the necessary arguments and will therefore be forced to ignore the
@@ -19,10 +19,10 @@ public interface Transition<R> {
   /**
    * An interface wrapping a view that exposes the necessary methods to run the various types of
    * android animations as transitions: ({@link ViewTransition}, {@link ViewPropertyTransition} and
-   * animated {@link android.graphics.drawable.Drawable}s).
+   * animated {@link Drawable}s).
    */
   interface ViewAdapter {
-    /** Returns the wrapped {@link android.view.View}. */
+    /** Returns the wrapped {@link View}. */
     View getView();
 
     /**
@@ -41,13 +41,13 @@ public interface Transition<R> {
   }
 
   /**
-   * Animates from the previous {@link android.graphics.drawable.Drawable} that is currently being
+   * Animates from the previous {@link Drawable} that is currently being
    * displayed in the given view, if not null, to the new resource that should be displayed in the
    * view.
    *
    * @param current The new resource that will be displayed in the view.
-   * @param adapter The {@link Transition.ViewAdapter} wrapping a view that can at least return an
-   *     {@link android.view.View} from {@link Transition.ViewAdapter#getView()}.
+   * @param adapter The {@link ViewAdapter} wrapping a view that can at least return an
+   *     {@link View} from {@link ViewAdapter#getView()}.
    * @return True if in the process of running the transition, the new resource was put on the view,
    *     false if the caller needs to manually put the current resource on the view.
    */

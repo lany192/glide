@@ -9,9 +9,9 @@ import android.os.Build;
 import android.os.ParcelFileDescriptor;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.annotation.VisibleForTesting;
+import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
+import android.support.annotation.VisibleForTesting;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.ImageHeaderParser;
 import com.bumptech.glide.load.ImageHeaderParser.ImageType;
@@ -48,9 +48,9 @@ public final class Downsampler {
   static final String TAG = "Downsampler";
 
   /**
-   * Indicates the {@link com.bumptech.glide.load.DecodeFormat} that will be used in conjunction
-   * with the image format to determine the {@link android.graphics.Bitmap.Config} to provide to
-   * {@link android.graphics.BitmapFactory.Options#inPreferredConfig} when decoding the image.
+   * Indicates the {@link DecodeFormat} that will be used in conjunction
+   * with the image format to determine the {@link Config} to provide to
+   * {@link BitmapFactory.Options#inPreferredConfig} when decoding the image.
    */
   public static final Option<DecodeFormat> DECODE_FORMAT =
       Option.memory(
@@ -66,7 +66,7 @@ public final class Downsampler {
   public static final Option<PreferredColorSpace> PREFERRED_COLOR_SPACE =
       Option.memory("com.bumptech.glide.load.resource.bitmap.Downsampler.PreferredColorSpace");
   /**
-   * Indicates the {@link com.bumptech.glide.load.resource.bitmap.DownsampleStrategy} option that
+   * Indicates the {@link DownsampleStrategy} option that
    * will be used to calculate the sample size to use to downsample an image given the original and
    * target dimensions of the image.
    *
@@ -91,7 +91,7 @@ public final class Downsampler {
 
   /**
    * Indicates that it's safe or unsafe to decode {@link Bitmap}s with {@link
-   * Bitmap.Config#HARDWARE}.
+   * Config#HARDWARE}.
    *
    * <p>Callers should almost never set this value to {@code true} manually. Glide will already do
    * so when Glide believes it's safe to do (when no transformations are applied). Instead, callers
@@ -126,12 +126,12 @@ public final class Downsampler {
           // Do nothing.
         }
       };
-  private static final Set<ImageHeaderParser.ImageType> TYPES_THAT_USE_POOL_PRE_KITKAT =
+  private static final Set<ImageType> TYPES_THAT_USE_POOL_PRE_KITKAT =
       Collections.unmodifiableSet(
           EnumSet.of(
-              ImageHeaderParser.ImageType.JPEG,
-              ImageHeaderParser.ImageType.PNG_A,
-              ImageHeaderParser.ImageType.PNG));
+              ImageType.JPEG,
+              ImageType.PNG_A,
+              ImageType.PNG));
   private static final Queue<BitmapFactory.Options> OPTIONS_QUEUE = Util.createQueue(0);
 
   private final BitmapPool bitmapPool;
@@ -168,7 +168,7 @@ public final class Downsampler {
   /**
    * Returns a Bitmap decoded from the given {@link InputStream} that is rotated to match any EXIF
    * data present in the stream and that is downsampled according to the given dimensions and any
-   * provided {@link com.bumptech.glide.load.resource.bitmap.DownsampleStrategy} option.
+   * provided {@link DownsampleStrategy} option.
    *
    * @see #decode(InputStream, int, int, Options, DecodeCallbacks)
    */
@@ -195,10 +195,10 @@ public final class Downsampler {
   /**
    * Returns a Bitmap decoded from the given {@link InputStream} that is rotated to match any EXIF
    * data present in the stream and that is downsampled according to the given dimensions and any
-   * provided {@link com.bumptech.glide.load.resource.bitmap.DownsampleStrategy} option.
+   * provided {@link DownsampleStrategy} option.
    *
    * <p>If a Bitmap is present in the {@link
-   * com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool} whose dimensions exactly match those
+   * BitmapPool} whose dimensions exactly match those
    * of the image for the given InputStream is available, the operation is much less expensive in
    * terms of memory.
    *
@@ -709,7 +709,7 @@ public final class Downsampler {
     // Changing configs can cause skewing on 4.1, see issue #128.
     if (format == DecodeFormat.PREFER_ARGB_8888
         || Build.VERSION.SDK_INT == Build.VERSION_CODES.JELLY_BEAN) {
-      optionsWithScaling.inPreferredConfig = Bitmap.Config.ARGB_8888;
+      optionsWithScaling.inPreferredConfig = Config.ARGB_8888;
       return;
     }
 
@@ -728,7 +728,7 @@ public final class Downsampler {
     }
 
     optionsWithScaling.inPreferredConfig =
-        hasAlpha ? Bitmap.Config.ARGB_8888 : Bitmap.Config.RGB_565;
+        hasAlpha ? Config.ARGB_8888 : Config.RGB_565;
     if (optionsWithScaling.inPreferredConfig == Config.RGB_565) {
       optionsWithScaling.inDither = true;
     }
@@ -738,8 +738,8 @@ public final class Downsampler {
    * A method for getting the dimensions of an image from the given InputStream.
    *
    * @param imageReader The {@link ImageReader} representing the image.
-   * @param options The options to pass to {@link BitmapFactory#decodeStream(java.io.InputStream,
-   *     android.graphics.Rect, android.graphics.BitmapFactory.Options)}.
+   * @param options The options to pass to {@link BitmapFactory#decodeStream(InputStream,
+   *     android.graphics.Rect, BitmapFactory.Options)}.
    * @return an array containing the dimensions of the image in the form {width, height}.
    */
   private static int[] getDimensions(
@@ -900,7 +900,7 @@ public final class Downsampler {
   @TargetApi(Build.VERSION_CODES.O)
   private static void setInBitmap(
       BitmapFactory.Options options, BitmapPool bitmapPool, int width, int height) {
-    @Nullable Bitmap.Config expectedConfig = null;
+    @Nullable Config expectedConfig = null;
     // Avoid short circuiting, it appears to break on some devices.
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
       if (options.inPreferredConfig == Config.HARDWARE) {

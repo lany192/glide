@@ -2,12 +2,12 @@ package com.bumptech.glide.request;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
-import androidx.annotation.CheckResult;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.FloatRange;
-import androidx.annotation.IntRange;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.CheckResult;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.FloatRange;
+import android.support.annotation.IntRange;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.Key;
@@ -245,7 +245,7 @@ public class RequestOptions extends BaseRequestOptions<RequestOptions> {
   }
 
   /**
-   * Returns a {@link com.bumptech.glide.request.RequestOptions} with {@link #encodeQuality(int)}
+   * Returns a {@link RequestOptions} with {@link #encodeQuality(int)}
    * called with the given quality.
    */
   @SuppressWarnings("WeakerAccess") // Public API
@@ -256,8 +256,8 @@ public class RequestOptions extends BaseRequestOptions<RequestOptions> {
   }
 
   /**
-   * Returns a {@link com.bumptech.glide.request.RequestOptions} with {@link
-   * #encodeFormat(android.graphics.Bitmap.CompressFormat)} called with the given format.
+   * Returns a {@link RequestOptions} with {@link
+   * #encodeFormat(Bitmap.CompressFormat)} called with the given format.
    */
   @SuppressWarnings("WeakerAccess") // Public API
   @NonNull
@@ -267,7 +267,7 @@ public class RequestOptions extends BaseRequestOptions<RequestOptions> {
   }
 
   /**
-   * Returns a new {@link com.bumptech.glide.request.RequestOptions} with {@link #dontAnimate()}
+   * Returns a new {@link RequestOptions} with {@link #dontAnimate()}
    * called.
    */
   @SuppressWarnings("WeakerAccess") // Public API

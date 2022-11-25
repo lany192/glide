@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.Initializable;
 import com.bumptech.glide.load.engine.Resource;
@@ -13,8 +13,8 @@ import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.util.Preconditions;
 
 /**
- * Lazily allocates a {@link android.graphics.drawable.BitmapDrawable} from a given {@link
- * android.graphics.Bitmap} on the first call to {@link #get()}.
+ * Lazily allocates a {@link BitmapDrawable} from a given {@link
+ * Bitmap} on the first call to {@link #get()}.
  */
 public final class LazyBitmapDrawableResource implements Resource<BitmapDrawable>, Initializable {
 

@@ -1,7 +1,7 @@
 package com.bumptech.glide.manager;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import com.bumptech.glide.util.Synthetic;
 
 /**

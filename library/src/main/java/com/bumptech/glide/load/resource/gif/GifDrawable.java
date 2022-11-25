@@ -12,10 +12,10 @@ import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
+import android.support.graphics.drawable.Animatable2Compat;
 import android.view.Gravity;
-import androidx.annotation.NonNull;
-import androidx.annotation.VisibleForTesting;
-import androidx.vectordrawable.graphics.drawable.Animatable2Compat;
+import android.support.annotation.NonNull;
+import android.support.annotation.VisibleForTesting;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.gifdecoder.GifDecoder;
 import com.bumptech.glide.load.Transformation;
@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * An animated {@link android.graphics.drawable.Drawable} that plays the frames of an animated GIF.
+ * An animated {@link Drawable} that plays the frames of an animated GIF.
  */
 public class GifDrawable extends Drawable
     implements GifFrameLoader.FrameCallback, Animatable, Animatable2Compat {
@@ -54,8 +54,8 @@ public class GifDrawable extends Drawable
   private boolean isRecycled;
   /**
    * True if the drawable is currently visible. Default to true because on certain platforms (at
-   * least 4.1.1), setVisible is not called on {@link android.graphics.drawable.Drawable Drawables}
-   * during {@link android.widget.ImageView#setImageDrawable(android.graphics.drawable.Drawable)}.
+   * least 4.1.1), setVisible is not called on {@link Drawable Drawables}
+   * during {@link android.widget.ImageView#setImageDrawable(Drawable)}.
    * See issue #130.
    */
   private boolean isVisible = true;
@@ -76,7 +76,7 @@ public class GifDrawable extends Drawable
    *
    * @param context A context.
    * @param bitmapPool Ignored, see deprecation note.
-   * @param frameTransformation An {@link com.bumptech.glide.load.Transformation} that can be
+   * @param frameTransformation An {@link Transformation} that can be
    *     applied to each frame.
    * @param targetFrameWidth The desired width of the frames displayed by this drawable (the width
    *     of the view or {@link com.bumptech.glide.request.target.Target} this drawable is being
@@ -86,7 +86,7 @@ public class GifDrawable extends Drawable
    *     being loaded into).
    * @param gifDecoder The decoder to use to decode GIF data.
    * @param firstFrame The decoded and transformed first frame of this GIF.
-   * @see #setFrameTransformation(com.bumptech.glide.load.Transformation, android.graphics.Bitmap)
+   * @see #setFrameTransformation(Transformation, Bitmap)
    * @deprecated Use {@link #GifDrawable(Context, GifDecoder, Transformation, int, int, Bitmap)}
    */
   @SuppressWarnings("deprecation")
@@ -106,7 +106,7 @@ public class GifDrawable extends Drawable
    * Constructor for GifDrawable.
    *
    * @param context A context.
-   * @param frameTransformation An {@link com.bumptech.glide.load.Transformation} that can be
+   * @param frameTransformation An {@link Transformation} that can be
    *     applied to each frame.
    * @param targetFrameWidth The desired width of the frames displayed by this drawable (the width
    *     of the view or {@link com.bumptech.glide.request.target.Target} this drawable is being
@@ -116,7 +116,7 @@ public class GifDrawable extends Drawable
    *     being loaded into).
    * @param gifDecoder The decoder to use to decode GIF data.
    * @param firstFrame The decoded and transformed first frame of this GIF.
-   * @see #setFrameTransformation(com.bumptech.glide.load.Transformation, android.graphics.Bitmap)
+   * @see #setFrameTransformation(Transformation, Bitmap)
    */
   public GifDrawable(
       Context context,
@@ -400,7 +400,7 @@ public class GifDrawable extends Drawable
    * this in onLoadCleared to avoid potential memory leak.
    *
    * @see GifDrawable#unregisterAnimationCallback(AnimationCallback).
-   * @param animationCallback Animation callback {@link Animatable2Compat.AnimationCallback}.
+   * @param animationCallback Animation callback {@link AnimationCallback}.
    */
   @Override
   public void registerAnimationCallback(@NonNull AnimationCallback animationCallback) {

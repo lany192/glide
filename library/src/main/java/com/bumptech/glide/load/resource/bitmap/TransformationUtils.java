@@ -12,11 +12,11 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.graphics.Shader;
+import android.media.ExifInterface;
 import android.os.Build;
 import android.util.Log;
-import androidx.annotation.NonNull;
-import androidx.annotation.VisibleForTesting;
-import androidx.exifinterface.media.ExifInterface;
+import android.support.annotation.NonNull;
+import android.support.annotation.VisibleForTesting;
 import com.bumptech.glide.load.Transformation;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.util.Preconditions;
@@ -181,7 +181,7 @@ public final class TransformationUtils {
     targetWidth = (int) (minPercentage * inBitmap.getWidth());
     targetHeight = (int) (minPercentage * inBitmap.getHeight());
 
-    Bitmap.Config config = getNonNullConfig(inBitmap);
+    Config config = getNonNullConfig(inBitmap);
     Bitmap toReuse = pool.get(targetWidth, targetHeight, config);
 
     // We don't add or remove alpha, so keep the alpha setting of the Bitmap we were given.
@@ -229,11 +229,11 @@ public final class TransformationUtils {
 
   /**
    * Sets the alpha of the Bitmap we're going to re-use to the alpha of the Bitmap we're going to
-   * transform. This keeps {@link android.graphics.Bitmap#hasAlpha()}} consistent before and after
+   * transform. This keeps {@link Bitmap#hasAlpha()}} consistent before and after
    * the transformation for transformations that don't add or remove transparent pixels.
    *
-   * @param inBitmap The {@link android.graphics.Bitmap} that will be transformed.
-   * @param outBitmap The {@link android.graphics.Bitmap} that will be returned from the
+   * @param inBitmap The {@link Bitmap} that will be transformed.
+   * @param outBitmap The {@link Bitmap} that will be returned from the
    *     transformation.
    */
   public static void setAlpha(Bitmap inBitmap, Bitmap outBitmap) {
@@ -325,7 +325,7 @@ public final class TransformationUtils {
     final int newWidth = Math.round(newRect.width());
     final int newHeight = Math.round(newRect.height());
 
-    Bitmap.Config config = getNonNullConfig(inBitmap);
+    Config config = getNonNullConfig(inBitmap);
     Bitmap result = pool.get(newWidth, newHeight, config);
 
     matrix.postTranslate(-newRect.left, -newRect.top);
@@ -387,7 +387,7 @@ public final class TransformationUtils {
     // Alpha is required for this transformation.
     Bitmap toTransform = getAlphaSafeBitmap(pool, inBitmap);
 
-    Bitmap.Config outConfig = getAlphaSafeConfig(inBitmap);
+    Config outConfig = getAlphaSafeConfig(inBitmap);
     Bitmap result = pool.get(destMinEdge, destMinEdge, outConfig);
     result.setHasAlpha(true);
 
@@ -412,7 +412,7 @@ public final class TransformationUtils {
 
   private static Bitmap getAlphaSafeBitmap(
       @NonNull BitmapPool pool, @NonNull Bitmap maybeAlphaSafe) {
-    Bitmap.Config safeConfig = getAlphaSafeConfig(maybeAlphaSafe);
+    Config safeConfig = getAlphaSafeConfig(maybeAlphaSafe);
     if (safeConfig.equals(maybeAlphaSafe.getConfig())) {
       return maybeAlphaSafe;
     }
@@ -429,12 +429,12 @@ public final class TransformationUtils {
   private static Config getAlphaSafeConfig(@NonNull Bitmap inBitmap) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
       // Avoid short circuiting the sdk check.
-      if (Bitmap.Config.RGBA_F16.equals(inBitmap.getConfig())) { // NOPMD
-        return Bitmap.Config.RGBA_F16;
+      if (Config.RGBA_F16.equals(inBitmap.getConfig())) { // NOPMD
+        return Config.RGBA_F16;
       }
     }
 
-    return Bitmap.Config.ARGB_8888;
+    return Config.ARGB_8888;
   }
 
   /**
@@ -539,7 +539,7 @@ public final class TransformationUtils {
       @NonNull BitmapPool pool, @NonNull Bitmap inBitmap, DrawRoundedCornerFn drawRoundedCornerFn) {
 
     // Alpha is required for this transformation.
-    Bitmap.Config safeConfig = getAlphaSafeConfig(inBitmap);
+    Config safeConfig = getAlphaSafeConfig(inBitmap);
     Bitmap toTransform = getAlphaSafeBitmap(pool, inBitmap);
     Bitmap result = pool.get(toTransform.getWidth(), toTransform.getHeight(), safeConfig);
 
@@ -574,8 +574,8 @@ public final class TransformationUtils {
   }
 
   @NonNull
-  private static Bitmap.Config getNonNullConfig(@NonNull Bitmap bitmap) {
-    return bitmap.getConfig() != null ? bitmap.getConfig() : Bitmap.Config.ARGB_8888;
+  private static Config getNonNullConfig(@NonNull Bitmap bitmap) {
+    return bitmap.getConfig() != null ? bitmap.getConfig() : Config.ARGB_8888;
   }
 
   private static void applyMatrix(

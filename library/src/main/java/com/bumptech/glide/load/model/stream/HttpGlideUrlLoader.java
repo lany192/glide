@@ -1,7 +1,7 @@
 package com.bumptech.glide.load.model.stream;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.bumptech.glide.load.Option;
 import com.bumptech.glide.load.Options;
 import com.bumptech.glide.load.data.HttpUrlFetcher;
@@ -13,8 +13,8 @@ import com.bumptech.glide.load.model.MultiModelLoaderFactory;
 import java.io.InputStream;
 
 /**
- * An {@link com.bumptech.glide.load.model.ModelLoader} for translating {@link
- * com.bumptech.glide.load.model.GlideUrl} (http/https URLS) into {@link java.io.InputStream} data.
+ * An {@link ModelLoader} for translating {@link
+ * GlideUrl} (http/https URLS) into {@link InputStream} data.
  */
 // Public API.
 @SuppressWarnings("WeakerAccess")

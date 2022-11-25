@@ -1,6 +1,6 @@
 package com.bumptech.glide;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import com.bumptech.glide.request.transition.NoTransition;
 import com.bumptech.glide.request.transition.TransitionFactory;
 import com.bumptech.glide.request.transition.ViewAnimationFactory;
@@ -52,7 +52,7 @@ public abstract class TransitionOptions<
    * may be wrapping when a resource load finishes. Will only be run if the load was loaded
    * asynchronously (i.e. was not in the memory cache).
    *
-   * @param animator The {@link com.bumptech.glide.request.transition.ViewPropertyTransition
+   * @param animator The {@link ViewPropertyTransition
    *     .Animator} to run.
    * @return This request builder.
    */

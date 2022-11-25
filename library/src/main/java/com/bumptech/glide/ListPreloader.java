@@ -2,8 +2,8 @@ package com.bumptech.glide;
 
 import android.graphics.drawable.Drawable;
 import android.widget.AbsListView;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.bumptech.glide.request.Request;
 import com.bumptech.glide.request.target.SizeReadyCallback;
 import com.bumptech.glide.request.target.Target;
@@ -20,8 +20,8 @@ import java.util.Queue;
  * cache size.
  *
  * <p>Must be put using {@link
- * AbsListView#setOnScrollListener(android.widget.AbsListView.OnScrollListener)}, or have its
- * corresponding methods called from another {@link android.widget.AbsListView.OnScrollListener} to
+ * AbsListView#setOnScrollListener(AbsListView.OnScrollListener)}, or have its
+ * corresponding methods called from another {@link AbsListView.OnScrollListener} to
  * function.
  *
  * @param <T> The type of the model being displayed in the list.
@@ -117,7 +117,7 @@ public class ListPreloader<T> implements AbsListView.OnScrollListener {
   }
 
   /**
-   * Constructor for {@link com.bumptech.glide.ListPreloader} that accepts interfaces for providing
+   * Constructor for {@link ListPreloader} that accepts interfaces for providing
    * the dimensions of images to preload, the list of models to preload for a given position, and
    * the request to use to load images.
    *

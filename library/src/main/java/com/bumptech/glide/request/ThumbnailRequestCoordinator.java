@@ -1,7 +1,7 @@
 package com.bumptech.glide.request;
 
-import androidx.annotation.GuardedBy;
-import androidx.annotation.Nullable;
+import android.support.annotation.GuardedBy;
+import android.support.annotation.Nullable;
 
 /**
  * A coordinator that coordinates two individual {@link Request}s that load a small thumbnail

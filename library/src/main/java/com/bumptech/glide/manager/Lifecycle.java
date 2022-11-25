@@ -1,6 +1,6 @@
 package com.bumptech.glide.manager;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 /** An interface for listening to Activity/Fragment lifecycle events. */
 public interface Lifecycle {

@@ -1,14 +1,14 @@
 package com.bumptech.glide.util;
 
-import androidx.annotation.GuardedBy;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.GuardedBy;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Queue;
 
 /**
- * An {@link java.io.InputStream} that catches, stores and rethrows {@link java.io.IOException}s
+ * An {@link InputStream} that catches, stores and rethrows {@link IOException}s
  * during read and skip calls. This allows users of this API to handle the exception at a higher
  * level if the exception is swallowed by some intermediate library. This class is a workaround for
  * a framework issue where exceptions during reads while decoding bitmaps in {@link

@@ -4,15 +4,15 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageView;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.bumptech.glide.request.Request;
 import com.bumptech.glide.request.transition.Transition;
 import com.bumptech.glide.util.Util;
 
 /**
- * A base {@link Target} for loading resources ({@link android.graphics.Bitmap}, {@link Drawable}
- * etc) that are used outside of {@link android.view.View}s.
+ * A base {@link Target} for loading resources ({@link Bitmap}, {@link Drawable}
+ * etc) that are used outside of {@link View}s.
  *
  * <p>If you're loading a resource into a {@link View}, use {@link
  * com.bumptech.glide.RequestBuilder#into(ImageView)}, a subclass of {@link ImageViewTarget}, or

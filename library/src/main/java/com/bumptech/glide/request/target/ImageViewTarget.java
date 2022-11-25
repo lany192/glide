@@ -3,16 +3,16 @@ package com.bumptech.glide.request.target;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.bumptech.glide.request.transition.Transition;
 
 /**
- * A base {@link com.bumptech.glide.request.target.Target} for displaying resources in {@link
- * android.widget.ImageView}s.
+ * A base {@link Target} for displaying resources in {@link
+ * ImageView}s.
  *
  * @param <Z> The type of resource that this target will display in the wrapped {@link
- *     android.widget.ImageView}.
+ *     ImageView}.
  */
 // Public API.
 @SuppressWarnings("WeakerAccess")
@@ -35,8 +35,8 @@ public abstract class ImageViewTarget<Z> extends ViewTarget<ImageView, Z>
   }
 
   /**
-   * Returns the current {@link android.graphics.drawable.Drawable} being displayed in the view
-   * using {@link android.widget.ImageView#getDrawable()}.
+   * Returns the current {@link Drawable} being displayed in the view
+   * using {@link ImageView#getDrawable()}.
    */
   @Override
   @Nullable
@@ -45,8 +45,8 @@ public abstract class ImageViewTarget<Z> extends ViewTarget<ImageView, Z>
   }
 
   /**
-   * Sets the given {@link android.graphics.drawable.Drawable} on the view using {@link
-   * android.widget.ImageView#setImageDrawable(android.graphics.drawable.Drawable)}.
+   * Sets the given {@link Drawable} on the view using {@link
+   * ImageView#setImageDrawable(Drawable)}.
    *
    * @param drawable {@inheritDoc}
    */
@@ -56,8 +56,8 @@ public abstract class ImageViewTarget<Z> extends ViewTarget<ImageView, Z>
   }
 
   /**
-   * Sets the given {@link android.graphics.drawable.Drawable} on the view using {@link
-   * android.widget.ImageView#setImageDrawable(android.graphics.drawable.Drawable)}.
+   * Sets the given {@link Drawable} on the view using {@link
+   * ImageView#setImageDrawable(Drawable)}.
    *
    * @param placeholder {@inheritDoc}
    */
@@ -69,8 +69,8 @@ public abstract class ImageViewTarget<Z> extends ViewTarget<ImageView, Z>
   }
 
   /**
-   * Sets the given {@link android.graphics.drawable.Drawable} on the view using {@link
-   * android.widget.ImageView#setImageDrawable(android.graphics.drawable.Drawable)}.
+   * Sets the given {@link Drawable} on the view using {@link
+   * ImageView#setImageDrawable(Drawable)}.
    *
    * @param errorDrawable {@inheritDoc}
    */
@@ -82,8 +82,8 @@ public abstract class ImageViewTarget<Z> extends ViewTarget<ImageView, Z>
   }
 
   /**
-   * Sets the given {@link android.graphics.drawable.Drawable} on the view using {@link
-   * android.widget.ImageView#setImageDrawable(android.graphics.drawable.Drawable)}.
+   * Sets the given {@link Drawable} on the view using {@link
+   * ImageView#setImageDrawable(Drawable)}.
    *
    * @param placeholder {@inheritDoc}
    */

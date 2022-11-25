@@ -1,6 +1,6 @@
 package com.bumptech.glide.util.pool;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import com.bumptech.glide.util.Synthetic;
 
 /** Verifies that the job is not in the recycled state. */

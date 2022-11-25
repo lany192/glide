@@ -1,11 +1,11 @@
 package com.bumptech.glide.load.data;
 
 import android.content.res.AssetManager;
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import java.io.IOException;
 import java.io.InputStream;
 
-/** Fetches an {@link java.io.InputStream} for an asset path. */
+/** Fetches an {@link InputStream} for an asset path. */
 public class StreamAssetPathFetcher extends AssetPathFetcher<InputStream> {
   public StreamAssetPathFetcher(AssetManager assetManager, String assetPath) {
     super(assetManager, assetPath);

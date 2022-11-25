@@ -11,12 +11,12 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.view.View;
-import androidx.annotation.CheckResult;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.GuardedBy;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RawRes;
+import android.support.annotation.CheckResult;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.GuardedBy;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.RawRes;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.engine.GlideException;
@@ -265,7 +265,7 @@ public class RequestManager
    * <p>This will release the memory used by completed bitmaps but leaves them in any configured
    * caches. When an #{@link android.app.Activity} receives #{@link
    * android.app.Activity#onTrimMemory(int)} at a level of #{@link
-   * android.content.ComponentCallbacks2#TRIM_MEMORY_BACKGROUND} this is desirable in order to keep
+   * ComponentCallbacks2#TRIM_MEMORY_BACKGROUND} this is desirable in order to keep
    * your process alive longer.
    *
    * @see #isPaused()
@@ -379,10 +379,10 @@ public class RequestManager
   }
 
   /**
-   * Attempts to always load the resource as a {@link android.graphics.Bitmap}, even if it could
+   * Attempts to always load the resource as a {@link Bitmap}, even if it could
    * actually be animated.
    *
-   * @return A new request builder for loading a {@link android.graphics.Bitmap}
+   * @return A new request builder for loading a {@link Bitmap}
    */
   @NonNull
   @CheckResult
@@ -392,7 +392,7 @@ public class RequestManager
 
   /**
    * Attempts to always load the resource as a {@link
-   * com.bumptech.glide.load.resource.gif.GifDrawable}.
+   * GifDrawable}.
    *
    * <p>If the underlying data is not a GIF, this will fail. As a result, this should only be used
    * if the model represents an animated GIF and the caller wants to interact with the GifDrawable
@@ -401,7 +401,7 @@ public class RequestManager
    * Drawable}, animated or not, automatically.
    *
    * @return A new request builder for loading a {@link
-   *     com.bumptech.glide.load.resource.gif.GifDrawable}.
+   *     GifDrawable}.
    */
   @NonNull
   @CheckResult
@@ -541,8 +541,8 @@ public class RequestManager
    * cached source data.
    *
    * <p>This method is designed to work for remote data that is or will be cached using {@link
-   * com.bumptech.glide.load.engine.DiskCacheStrategy#DATA}. As a result, specifying a {@link
-   * com.bumptech.glide.load.engine.DiskCacheStrategy} on this request is generally not recommended.
+   * DiskCacheStrategy#DATA}. As a result, specifying a {@link
+   * DiskCacheStrategy} on this request is generally not recommended.
    *
    * @return A new request builder for downloading content to cache and returning the cache File.
    */

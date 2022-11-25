@@ -1,8 +1,8 @@
 package com.bumptech.glide.request.target;
 
 import android.graphics.drawable.Drawable;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.bumptech.glide.manager.LifecycleListener;
 import com.bumptech.glide.request.Request;
 import com.bumptech.glide.request.transition.Transition;
@@ -48,7 +48,7 @@ public interface Target<R> extends LifecycleListener {
   /**
    * A <b>mandatory</b> lifecycle callback that is called when a load fails.
    *
-   * <p>Note - This may be called before {@link #onLoadStarted(android.graphics.drawable.Drawable) }
+   * <p>Note - This may be called before {@link #onLoadStarted(Drawable) }
    * if the model object is null.
    *
    * <p>You <b>must</b> ensure that any current Drawable received in {@link #onResourceReady(Object,

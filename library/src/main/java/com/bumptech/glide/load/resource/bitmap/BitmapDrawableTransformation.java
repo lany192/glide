@@ -4,14 +4,14 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import com.bumptech.glide.load.Transformation;
 import com.bumptech.glide.load.engine.Resource;
 import com.bumptech.glide.util.Preconditions;
 import java.security.MessageDigest;
 
 /**
- * Transforms {@link android.graphics.drawable.BitmapDrawable}s.
+ * Transforms {@link BitmapDrawable}s.
  *
  * @deprecated Use {@link DrawableTransformation} instead.
  */

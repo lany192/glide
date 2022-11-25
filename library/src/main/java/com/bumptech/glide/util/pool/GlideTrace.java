@@ -1,6 +1,7 @@
 package com.bumptech.glide.util.pool;
 
-import androidx.tracing.Trace;
+import android.os.Trace;
+
 import java.util.concurrent.atomic.AtomicInteger;
 
 /** Systracing utilities for Glide. */

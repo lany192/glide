@@ -1,10 +1,10 @@
 package com.bumptech.glide.load.engine;
 
 import android.util.Log;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.VisibleForTesting;
-import androidx.core.util.Pools;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.VisibleForTesting;
+import android.support.v4.util.Pools;
 import com.bumptech.glide.GlideContext;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.DataSource;
@@ -29,7 +29,7 @@ import java.util.concurrent.Executor;
 public class Engine
     implements EngineJobListener,
         MemoryCache.ResourceRemovedListener,
-        EngineResource.ResourceListener {
+        ResourceListener {
   private static final String TAG = "Engine";
   private static final int JOB_POOL_SIZE = 150;
   private static final boolean VERBOSE_IS_LOGGABLE = Log.isLoggable(TAG, Log.VERBOSE);

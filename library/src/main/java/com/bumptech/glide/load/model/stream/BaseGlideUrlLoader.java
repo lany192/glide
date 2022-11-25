@@ -1,8 +1,8 @@
 package com.bumptech.glide.load.model.stream;
 
 import android.text.TextUtils;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.bumptech.glide.load.Key;
 import com.bumptech.glide.load.Options;
 import com.bumptech.glide.load.model.GlideUrl;
@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  * A base class for loading data over http/https. Can be subclassed for use with any model that can
- * be translated in to {@link java.io.InputStream} data.
+ * be translated in to {@link InputStream} data.
  *
  * @param <Model> The type of the model.
  */

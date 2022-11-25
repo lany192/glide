@@ -5,8 +5,8 @@ import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.bumptech.glide.load.model.Model;
 import com.bumptech.glide.request.target.Target;
 import java.util.ArrayDeque;
@@ -54,8 +54,8 @@ public final class Util {
   /**
    * Returns the allocated byte size of the given bitmap.
    *
-   * @see #getBitmapByteSize(android.graphics.Bitmap)
-   * @deprecated Use {@link #getBitmapByteSize(android.graphics.Bitmap)} instead. Scheduled to be
+   * @see #getBitmapByteSize(Bitmap)
+   * @deprecated Use {@link #getBitmapByteSize(Bitmap)} instead. Scheduled to be
    *     removed in Glide 4.0.
    */
   @Deprecated
@@ -94,8 +94,8 @@ public final class Util {
   }
 
   /**
-   * Returns the in memory size of {@link android.graphics.Bitmap} with the given width, height, and
-   * {@link android.graphics.Bitmap.Config}.
+   * Returns the in memory size of {@link Bitmap} with the given width, height, and
+   * {@link Bitmap.Config}.
    */
   public static int getBitmapByteSize(int width, int height, @Nullable Bitmap.Config config) {
     return width * height * getBytesPerPixel(config);
@@ -167,7 +167,7 @@ public final class Util {
   }
 
   /**
-   * Throws an {@link java.lang.IllegalArgumentException} if called on a thread other than the main
+   * Throws an {@link IllegalArgumentException} if called on a thread other than the main
    * thread.
    */
   public static void assertMainThread() {
@@ -176,7 +176,7 @@ public final class Util {
     }
   }
 
-  /** Throws an {@link java.lang.IllegalArgumentException} if called on the main thread. */
+  /** Throws an {@link IllegalArgumentException} if called on the main thread. */
   public static void assertBackgroundThread() {
     if (!isOnBackgroundThread()) {
       throw new IllegalArgumentException("You must call this method on a background thread");
@@ -193,7 +193,7 @@ public final class Util {
     return !isOnMainThread();
   }
 
-  /** Creates a {@link java.util.Queue} of the given size using Glide's preferred implementation. */
+  /** Creates a {@link Queue} of the given size using Glide's preferred implementation. */
   @NonNull
   public static <T> Queue<T> createQueue(int size) {
     return new ArrayDeque<>(size);

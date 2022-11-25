@@ -10,10 +10,10 @@ import android.view.View.OnAttachStateChangeListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
-import androidx.annotation.CallSuper;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.VisibleForTesting;
+import android.support.annotation.CallSuper;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.VisibleForTesting;
 import com.bumptech.glide.R;
 import com.bumptech.glide.request.Request;
 import com.bumptech.glide.util.Preconditions;
@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * A base {@link Target} for loading {@link android.graphics.Bitmap}s into {@link View}s that
  * provides default implementations for most most methods and can determine the size of views using
- * a {@link android.view.ViewTreeObserver.OnDrawListener}.
+ * a {@link ViewTreeObserver.OnDrawListener}.
  *
  * <p>To detect {@link View} reuse in {@link android.widget.ListView} or any {@link
  * android.view.ViewGroup} that reuses views, this class uses the {@link View#setTag(Object)} method
@@ -197,17 +197,17 @@ public abstract class ViewTarget<T extends View, Z> extends BaseTarget<Z> {
     isAttachStateListenerAdded = false;
   }
 
-  /** Returns the wrapped {@link android.view.View}. */
+  /** Returns the wrapped {@link View}. */
   @NonNull
   public T getView() {
     return view;
   }
 
   /**
-   * Determines the size of the view by first checking {@link android.view.View#getWidth()} and
-   * {@link android.view.View#getHeight()}. If one or both are zero, it then checks the view's
+   * Determines the size of the view by first checking {@link View#getWidth()} and
+   * {@link View#getHeight()}. If one or both are zero, it then checks the view's
    * {@link LayoutParams}. If one or both of the params width and height are less than or equal to
-   * zero, it then adds an {@link android.view.ViewTreeObserver.OnPreDrawListener} which waits until
+   * zero, it then adds an {@link ViewTreeObserver.OnPreDrawListener} which waits until
    * the view has been measured before calling the callback with the view's drawn width and height.
    *
    * @param cb {@inheritDoc}
@@ -246,15 +246,15 @@ public abstract class ViewTarget<T extends View, Z> extends BaseTarget<Z> {
   }
 
   /**
-   * Returns any stored request using {@link android.view.View#getTag()}.
+   * Returns any stored request using {@link View#getTag()}.
    *
    * <p>For Glide to function correctly, Glide must be the only thing that calls {@link
    * View#setTag(Object)}. If the tag is cleared or put to another object type, Glide will not be
    * able to retrieve and cancel previous loads which will not only prevent Glide from reusing
    * resource, but will also result in incorrect images being loaded and lots of flashing of images
-   * in lists. As a result, this will throw an {@link java.lang.IllegalArgumentException} if {@link
-   * android.view.View#getTag()}} returns a non null object that is not an {@link
-   * com.bumptech.glide.request.Request}.
+   * in lists. As a result, this will throw an {@link IllegalArgumentException} if {@link
+   * View#getTag()}} returns a non null object that is not an {@link
+   * Request}.
    */
   @Override
   @Nullable

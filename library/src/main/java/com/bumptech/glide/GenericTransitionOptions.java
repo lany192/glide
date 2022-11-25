@@ -1,6 +1,6 @@
 package com.bumptech.glide;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import com.bumptech.glide.request.transition.TransitionFactory;
 import com.bumptech.glide.request.transition.ViewPropertyTransition;
 

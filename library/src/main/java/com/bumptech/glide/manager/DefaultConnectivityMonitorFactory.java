@@ -2,14 +2,14 @@ package com.bumptech.glide.manager;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
-import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
+import android.support.annotation.NonNull;
 
 /**
- * A factory class that produces a functional {@link com.bumptech.glide.manager.ConnectivityMonitor}
+ * A factory class that produces a functional {@link ConnectivityMonitor}
  * if the application has the {@code android.permission.ACCESS_NETWORK_STATE} permission and a no-op
- * non functional {@link com.bumptech.glide.manager.ConnectivityMonitor} if the app does not have
+ * non functional {@link ConnectivityMonitor} if the app does not have
  * the required permission.
  */
 public class DefaultConnectivityMonitorFactory implements ConnectivityMonitorFactory {

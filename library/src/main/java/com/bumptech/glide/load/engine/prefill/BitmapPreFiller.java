@@ -1,7 +1,7 @@
 package com.bumptech.glide.load.engine.prefill;
 
 import android.graphics.Bitmap;
-import androidx.annotation.VisibleForTesting;
+import android.support.annotation.VisibleForTesting;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.engine.cache.MemoryCache;
@@ -10,8 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * A class for pre-filling {@link android.graphics.Bitmap Bitmaps} in a {@link
- * com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool}.
+ * A class for pre-filling {@link Bitmap Bitmaps} in a {@link
+ * BitmapPool}.
  */
 public final class BitmapPreFiller {
 

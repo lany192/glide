@@ -14,7 +14,7 @@ public class ViewPropertyTransition<R> implements Transition<R> {
   private final Animator animator;
 
   /**
-   * Constructor for a view property animation that takes an {@link ViewPropertyTransition.Animator}
+   * Constructor for a view property animation that takes an {@link Animator}
    * interface that can apply a transition to a view.
    *
    * @param animator The animator to use.
@@ -26,7 +26,7 @@ public class ViewPropertyTransition<R> implements Transition<R> {
   }
 
   /**
-   * Always applies the {@link ViewPropertyTransition.Animator} given in the constructor to the
+   * Always applies the {@link Animator} given in the constructor to the
    * given view and returns {@code false} because the animator cannot put the new resource on the
    * view.
    *
@@ -45,11 +45,11 @@ public class ViewPropertyTransition<R> implements Transition<R> {
 
   /**
    * An interface that allows an animation to be applied on or started from an {@link
-   * android.view.View}.
+   * View}.
    */
   public interface Animator {
     /**
-     * Starts an animation on the given {@link android.view.View}.
+     * Starts an animation on the given {@link View}.
      *
      * @param view The view to transition.
      */

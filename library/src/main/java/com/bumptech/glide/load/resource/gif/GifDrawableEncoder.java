@@ -1,7 +1,7 @@
 package com.bumptech.glide.load.resource.gif;
 
 import android.util.Log;
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import com.bumptech.glide.load.EncodeStrategy;
 import com.bumptech.glide.load.Options;
 import com.bumptech.glide.load.ResourceEncoder;
@@ -11,7 +11,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Writes the original bytes of a {@link com.bumptech.glide.load.resource.gif.GifDrawable} to an
+ * Writes the original bytes of a {@link GifDrawable} to an
  * {@link java.io.OutputStream}.
  */
 public class GifDrawableEncoder implements ResourceEncoder<GifDrawable> {

@@ -1,15 +1,15 @@
 package com.bumptech.glide.signature;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import com.bumptech.glide.load.Key;
 import com.bumptech.glide.util.Preconditions;
 import java.security.MessageDigest;
 
 /**
- * Wraps an {@link java.lang.Object}, delegating {@link #equals(Object)} and {@link #hashCode()} to
+ * Wraps an {@link Object}, delegating {@link #equals(Object)} and {@link #hashCode()} to
  * the wrapped Object and providing the bytes of the result of the Object's {@link #toString()}
- * method to the {@link java.security.MessageDigest} in {@link
- * #updateDiskCacheKey(java.security.MessageDigest)}.
+ * method to the {@link MessageDigest} in {@link
+ * #updateDiskCacheKey(MessageDigest)}.
  *
  * <p>The Object's {@link #toString()} method must be unique and suitable for use as a disk cache
  * key.

@@ -4,12 +4,12 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import androidx.annotation.CheckResult;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.FloatRange;
-import androidx.annotation.IntRange;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.CheckResult;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.FloatRange;
+import android.support.annotation.IntRange;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.Key;
@@ -405,12 +405,12 @@ public abstract class BaseRequestOptions<T extends BaseRequestOptions<T>> implem
   }
 
   /**
-   * Sets the {@link android.content.res.Resources.Theme} to apply when loading {@link Drawable}s
+   * Sets the {@link Resources.Theme} to apply when loading {@link Drawable}s
    * for resource ids, including those provided via {@link #error(int)}, {@link #placeholder(int)},
    * and {@link #fallback(Drawable)}.
    *
-   * <p>The {@link android.content.res.Resources.Theme} provided here will override the {@link
-   * android.content.res.Resources.Theme} of the application {@link android.content.Context}.
+   * <p>The {@link Resources.Theme} provided here will override the {@link
+   * Resources.Theme} of the application {@link android.content.Context}.
    *
    * @param theme The theme to use when loading Drawables.
    * @return this request builder.
@@ -584,7 +584,7 @@ public abstract class BaseRequestOptions<T extends BaseRequestOptions<T>> implem
 
   /**
    * Sets the value for key {@link
-   * com.bumptech.glide.load.resource.bitmap.BitmapEncoder#COMPRESSION_FORMAT}.
+   * BitmapEncoder#COMPRESSION_FORMAT}.
    */
   @NonNull
   @CheckResult
@@ -644,7 +644,7 @@ public abstract class BaseRequestOptions<T extends BaseRequestOptions<T>> implem
   }
 
   /**
-   * Disables the use of {@link android.graphics.Bitmap.Config#HARDWARE} in {@link Downsampler} to
+   * Disables the use of {@link Bitmap.Config#HARDWARE} in {@link Downsampler} to
    * avoid errors caused by inspecting Bitmap pixels, drawing with hardware support disabled,
    * drawing to {@link android.graphics.Canvas}s backed by {@link Bitmap}s etc.
    *
@@ -653,11 +653,11 @@ public abstract class BaseRequestOptions<T extends BaseRequestOptions<T>> implem
    * Downsampler#ALLOW_HARDWARE_CONFIG}, Glide will set the value per request based on whether or
    * not a {@link Transformation} is applied and if one is, the type of {@link Transformation}
    * applied. Built in transformations like {@link FitCenter} and {@link
-   * com.bumptech.glide.load.resource.bitmap.DownsampleStrategy.CenterOutside} can safely use {@link
-   * android.graphics.Bitmap.Config#HARDWARE} because they can be entirely replaced by scaling
+   * DownsampleStrategy.CenterOutside} can safely use {@link
+   * Bitmap.Config#HARDWARE} because they can be entirely replaced by scaling
    * within {@link Downsampler}. {@link Transformation}s like {@link #circleCrop()} that can't be
    * replicated by {@link Downsampler} cannot use {@link Bitmap.Config#HARDWARE} because {@link
-   * android.graphics.Bitmap.Config#HARDWARE} cannot be drawn to {@link android.graphics.Canvas}s,
+   * Bitmap.Config#HARDWARE} cannot be drawn to {@link android.graphics.Canvas}s,
    * which is required by most {@link Transformation}s.
    */
   @NonNull
@@ -683,10 +683,10 @@ public abstract class BaseRequestOptions<T extends BaseRequestOptions<T>> implem
    * Sets the read and write timeout for the http requests used to load the image.
    *
    * <p>This is a component option specific to Glide's default networking library and {@link
-   * com.bumptech.glide.load.model.stream.HttpGlideUrlLoader}. If you use any other networking
+   * HttpGlideUrlLoader}. If you use any other networking
    * library including Glide's Volley or OkHttp integration libraries, this option will be ignored.
    *
-   * @see com.bumptech.glide.load.model.stream.HttpGlideUrlLoader#TIMEOUT
+   * @see HttpGlideUrlLoader#TIMEOUT
    * @param timeoutMs The read and write timeout in milliseconds.
    */
   @NonNull
@@ -696,7 +696,7 @@ public abstract class BaseRequestOptions<T extends BaseRequestOptions<T>> implem
   }
 
   /**
-   * Applies {@link com.bumptech.glide.load.resource.bitmap.CenterCrop} to all default types, and
+   * Applies {@link CenterCrop} to all default types, and
    * ignores unknown types.
    *
    * <p>This will override previous calls to {@link #dontTransform()}.
@@ -758,7 +758,7 @@ public abstract class BaseRequestOptions<T extends BaseRequestOptions<T>> implem
   }
 
   /**
-   * Applies {@link com.bumptech.glide.load.resource.bitmap.CenterInside} to all default types,
+   * Applies {@link CenterInside} to all default types,
    * {@link DownsampleStrategy#CENTER_INSIDE} to image types, and ignores unknown types.
    *
    * <p>This will override previous calls to {@link #dontTransform()} and previous calls to {@link
@@ -878,8 +878,8 @@ public abstract class BaseRequestOptions<T extends BaseRequestOptions<T>> implem
 
   /**
    * Applies the given {@link Transformation} for {@link Bitmap Bitmaps} to the default types
-   * ({@link Bitmap}, {@link android.graphics.drawable.BitmapDrawable}, and {@link
-   * com.bumptech.glide.load.resource.gif.GifDrawable}) and throws an exception if asked to
+   * ({@link Bitmap}, {@link BitmapDrawable}, and {@link
+   * GifDrawable}) and throws an exception if asked to
    * transform an unknown type.
    *
    * <p>This will override previous calls to {@link #dontTransform()}.
@@ -898,8 +898,8 @@ public abstract class BaseRequestOptions<T extends BaseRequestOptions<T>> implem
 
   /**
    * Applies the given {@link Transformation}s in the given order for {@link Bitmap Bitmaps} to the
-   * default types ({@link Bitmap}, {@link android.graphics.drawable.BitmapDrawable}, and {@link
-   * com.bumptech.glide.load.resource.gif.GifDrawable}) and throws an exception if asked to
+   * default types ({@link Bitmap}, {@link BitmapDrawable}, and {@link
+   * GifDrawable}) and throws an exception if asked to
    * transform an unknown type.
    *
    * <p>This will override previous calls to {@link #dontTransform()}.
@@ -924,8 +924,8 @@ public abstract class BaseRequestOptions<T extends BaseRequestOptions<T>> implem
 
   /**
    * Applies the given {@link Transformation}s in the given order for {@link Bitmap Bitmaps} to the
-   * default types ({@link Bitmap}, {@link android.graphics.drawable.BitmapDrawable}, and {@link
-   * com.bumptech.glide.load.resource.gif.GifDrawable}) and throws an exception if asked to
+   * default types ({@link Bitmap}, {@link BitmapDrawable}, and {@link
+   * GifDrawable}) and throws an exception if asked to
    * transform an unknown type.
    *
    * <p>This will override previous calls to {@link #dontTransform()}.
@@ -946,8 +946,8 @@ public abstract class BaseRequestOptions<T extends BaseRequestOptions<T>> implem
 
   /**
    * Applies the given {@link Transformation} for {@link Bitmap Bitmaps} to the default types
-   * ({@link Bitmap}, {@link android.graphics.drawable.BitmapDrawable}, and {@link
-   * com.bumptech.glide.load.resource.gif.GifDrawable}) and ignores unknown types.
+   * ({@link Bitmap}, {@link BitmapDrawable}, and {@link
+   * GifDrawable}) and ignores unknown types.
    *
    * <p>This will override previous calls to {@link #dontTransform()}.
    *

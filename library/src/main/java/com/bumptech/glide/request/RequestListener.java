@@ -2,7 +2,7 @@ package com.bumptech.glide.request;
 
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-import androidx.annotation.Nullable;
+import android.support.annotation.Nullable;
 import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
@@ -33,7 +33,7 @@ public interface RequestListener<R> {
    * Glide.with(fragment/activity).load()} to avoid object churn.
    *
    * <p>It is not safe to reload this or a different model in this callback. If you need to do so
-   * use {@link com.bumptech.glide.RequestBuilder#error(RequestBuilder)} instead.
+   * use {@link RequestBuilder#error(RequestBuilder)} instead.
    *
    * <p>Although you can't start an entirely new load, it is safe to change what is displayed in the
    * {@link Target} at this point, as long as you return {@code true} from the method to prevent
@@ -64,7 +64,7 @@ public interface RequestListener<R> {
 
   /**
    * Called when a load completes successfully, immediately before {@link
-   * Target#onResourceReady(Object, com.bumptech.glide.request.transition.Transition)}.
+   * Target#onResourceReady(Object, Transition)}.
    *
    * <p>For threading guarantees, see the class comment.
    *

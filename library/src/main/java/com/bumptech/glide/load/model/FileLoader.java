@@ -2,7 +2,7 @@ package com.bumptech.glide.load.model;
 
 import android.os.ParcelFileDescriptor;
 import android.util.Log;
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.Options;
@@ -17,8 +17,8 @@ import java.io.InputStream;
 /**
  * A simple model loader for loading data from {@link File}s.
  *
- * @param <Data> The type of data loaded from the given {@link java.io.File} ({@link
- *     java.io.InputStream} or {@link java.io.FileDescriptor} etc).
+ * @param <Data> The type of data loaded from the given {@link File} ({@link
+ *     InputStream} or {@link java.io.FileDescriptor} etc).
  */
 public class FileLoader<Data> implements ModelLoader<File, Data> {
   private static final String TAG = "FileLoader";
@@ -43,7 +43,7 @@ public class FileLoader<Data> implements ModelLoader<File, Data> {
   }
 
   /**
-   * Allows opening a specific type of data from a {@link java.io.File}.
+   * Allows opening a specific type of data from a {@link File}.
    *
    * @param <Data> The type of data that can be opened.
    */
@@ -108,9 +108,9 @@ public class FileLoader<Data> implements ModelLoader<File, Data> {
   }
 
   /**
-   * Base factory for loading data from {@link java.io.File files}.
+   * Base factory for loading data from {@link File files}.
    *
-   * @param <Data> The type of data that will be loaded for a given {@link java.io.File}.
+   * @param <Data> The type of data that will be loaded for a given {@link File}.
    */
   public static class Factory<Data> implements ModelLoaderFactory<File, Data> {
     private final FileOpener<Data> opener;

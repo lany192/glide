@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Parses {@link com.bumptech.glide.module.GlideModule} references out of the AndroidManifest file.
+ * Parses {@link GlideModule} references out of the AndroidManifest file.
  */
 // Used only in javadoc.
 @SuppressWarnings("deprecation")

@@ -2,7 +2,7 @@ package com.bumptech.glide.load.resource.bitmap;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import com.bumptech.glide.load.EncodeStrategy;
 import com.bumptech.glide.load.Options;
 import com.bumptech.glide.load.ResourceEncoder;
@@ -10,7 +10,7 @@ import com.bumptech.glide.load.engine.Resource;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import java.io.File;
 
-/** Encodes {@link android.graphics.drawable.BitmapDrawable}s. */
+/** Encodes {@link BitmapDrawable}s. */
 public class BitmapDrawableEncoder implements ResourceEncoder<BitmapDrawable> {
 
   private final BitmapPool bitmapPool;

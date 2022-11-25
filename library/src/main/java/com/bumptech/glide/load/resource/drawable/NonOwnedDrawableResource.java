@@ -1,8 +1,8 @@
 package com.bumptech.glide.load.resource.drawable;
 
 import android.graphics.drawable.Drawable;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.bumptech.glide.load.engine.Resource;
 
 /**

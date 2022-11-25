@@ -2,10 +2,10 @@ package com.bumptech.glide.load.data;
 
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import java.io.IOException;
 
-/** Fetches an {@link android.content.res.AssetFileDescriptor} for an asset path. */
+/** Fetches an {@link AssetFileDescriptor} for an asset path. */
 public class FileDescriptorAssetPathFetcher extends AssetPathFetcher<AssetFileDescriptor> {
   public FileDescriptorAssetPathFetcher(AssetManager assetManager, String assetPath) {
     super(assetManager, assetPath);

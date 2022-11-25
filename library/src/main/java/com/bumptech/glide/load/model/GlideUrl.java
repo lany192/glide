@@ -2,8 +2,8 @@ package com.bumptech.glide.load.model;
 
 import android.net.Uri;
 import android.text.TextUtils;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.bumptech.glide.load.Key;
 import com.bumptech.glide.util.Preconditions;
 import java.net.MalformedURLException;
@@ -22,7 +22,7 @@ import java.util.Map;
  * URL, call {@link #toStringUrl()}. To obtain a less safe, but less expensive to calculate cache
  * key, call {@link #getCacheKey()}.
  *
- * <p>This class can also optionally wrap {@link com.bumptech.glide.load.model.Headers} for
+ * <p>This class can also optionally wrap {@link Headers} for
  * convenience.
  */
 public class GlideUrl implements Key {

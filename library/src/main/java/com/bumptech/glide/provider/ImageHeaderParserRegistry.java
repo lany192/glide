@@ -1,6 +1,6 @@
 package com.bumptech.glide.provider;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import com.bumptech.glide.load.ImageHeaderParser;
 import java.util.ArrayList;
 import java.util.List;

@@ -23,7 +23,7 @@ public class HttpUriLoader extends UrlUriLoader<InputStream> {
   /**
    * Factory for loading {@link InputStream}s from http/https {@link Uri}s.
    *
-   * @deprecated Use {@link UrlUriLoader.StreamFactory} instead
+   * @deprecated Use {@link StreamFactory} instead
    */
   @Deprecated
   public static class Factory extends StreamFactory {

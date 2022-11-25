@@ -13,10 +13,10 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Build.VERSION_CODES;
 import android.util.Log;
-import androidx.annotation.GuardedBy;
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.annotation.VisibleForTesting;
+import android.support.annotation.GuardedBy;
+import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
+import android.support.annotation.VisibleForTesting;
 import com.bumptech.glide.manager.ConnectivityMonitor.ConnectivityListener;
 import com.bumptech.glide.util.GlideSuppliers;
 import com.bumptech.glide.util.GlideSuppliers.GlideSupplier;
@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.Executor;
 
-/** Uses {@link android.net.ConnectivityManager} to identify connectivity changes. */
+/** Uses {@link ConnectivityManager} to identify connectivity changes. */
 final class SingletonConnectivityReceiver {
   private static volatile SingletonConnectivityReceiver instance;
   private static final String TAG = "ConnectivityMonitor";
@@ -83,7 +83,7 @@ final class SingletonConnectivityReceiver {
         };
 
     frameworkConnectivityMonitor =
-        Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
+        Build.VERSION.SDK_INT >= VERSION_CODES.N
             ? new FrameworkConnectivityMonitorPostApi24(connectivityManager, connectivityListener)
             : new FrameworkConnectivityMonitorPreApi24(
                 context, connectivityManager, connectivityListener);

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import com.bumptech.glide.load.Options;
 import com.bumptech.glide.load.ResourceDecoder;
 import com.bumptech.glide.load.engine.Resource;
@@ -13,7 +13,7 @@ import com.bumptech.glide.util.Preconditions;
 import java.io.IOException;
 
 /**
- * Decodes an {@link android.graphics.drawable.BitmapDrawable} for a data type.
+ * Decodes an {@link BitmapDrawable} for a data type.
  *
  * @param <DataType> The type of data that will be decoded.
  */

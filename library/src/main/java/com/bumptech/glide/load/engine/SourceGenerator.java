@@ -1,8 +1,8 @@
 package com.bumptech.glide.load.engine;
 
 import android.util.Log;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.Encoder;
 import com.bumptech.glide.load.Key;
@@ -18,8 +18,8 @@ import java.io.IOException;
 import java.util.Collections;
 
 /**
- * Generates {@link com.bumptech.glide.load.data.DataFetcher DataFetchers} from original source data
- * using registered {@link com.bumptech.glide.load.model.ModelLoader ModelLoaders} and the model
+ * Generates {@link DataFetcher DataFetchers} from original source data
+ * using registered {@link ModelLoader ModelLoaders} and the model
  * provided for the load.
  *
  * <p>Depending on the disk cache strategy, source data may first be written to disk and then loaded
@@ -37,7 +37,7 @@ class SourceGenerator implements DataFetcherGenerator, DataFetcherGenerator.Fetc
   private volatile int loadDataListIndex;
   private volatile DataCacheGenerator sourceCacheGenerator;
   private volatile Object dataToCache;
-  private volatile ModelLoader.LoadData<?> loadData;
+  private volatile LoadData<?> loadData;
   private volatile DataCacheKey originalKey;
 
   SourceGenerator(DecodeHelper<?> helper, FetcherReadyCallback cb) {

@@ -1,6 +1,6 @@
 package com.bumptech.glide.load.engine;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 /**
  * A resource interface that wraps a particular type so that it can be pooled and reused.

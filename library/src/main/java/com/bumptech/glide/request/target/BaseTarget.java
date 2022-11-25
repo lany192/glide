@@ -1,7 +1,7 @@
 package com.bumptech.glide.request.target;
 
 import android.graphics.drawable.Drawable;
-import androidx.annotation.Nullable;
+import android.support.annotation.Nullable;
 import com.bumptech.glide.request.Request;
 
 /**
@@ -13,8 +13,8 @@ import com.bumptech.glide.request.Request;
  * com.bumptech.glide.RequestManager#clear(Target)}.
  *
  * <p>For loading {@link com.bumptech.glide.load.engine.Resource}s into {@link android.view.View}s,
- * {@link com.bumptech.glide.request.target.ViewTarget} or {@link
- * com.bumptech.glide.request.target.ImageViewTarget} are preferable.
+ * {@link ViewTarget} or {@link
+ * ImageViewTarget} are preferable.
  *
  * @param <Z> The type of resource that will be received by this target.
  * @deprecated Use {@link CustomViewTarget} if loading the content into a view, the download API if

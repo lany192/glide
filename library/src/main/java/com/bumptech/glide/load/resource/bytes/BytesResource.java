@@ -1,10 +1,10 @@
 package com.bumptech.glide.load.resource.bytes;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import com.bumptech.glide.load.engine.Resource;
 import com.bumptech.glide.util.Preconditions;
 
-/** An {@link com.bumptech.glide.load.engine.Resource} wrapping a byte array. */
+/** An {@link Resource} wrapping a byte array. */
 public class BytesResource implements Resource<byte[]> {
   private final byte[] bytes;
 

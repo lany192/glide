@@ -4,9 +4,9 @@ import android.os.StrictMode;
 import android.os.StrictMode.ThreadPolicy;
 import android.text.TextUtils;
 import android.util.Log;
-import androidx.annotation.IntRange;
-import androidx.annotation.NonNull;
-import androidx.annotation.VisibleForTesting;
+import android.support.annotation.IntRange;
+import android.support.annotation.NonNull;
+import android.support.annotation.VisibleForTesting;
 import com.bumptech.glide.util.Synthetic;
 import java.util.Collection;
 import java.util.List;
@@ -71,8 +71,8 @@ public final class GlideExecutor implements ExecutorService {
    *
    * <p>Disk cache executors do not allow network operations on their threads.
    */
-  public static GlideExecutor.Builder newDiskCacheBuilder() {
-    return new GlideExecutor.Builder(/* preventNetworkOperations= */ true)
+  public static Builder newDiskCacheBuilder() {
+    return new Builder(/* preventNetworkOperations= */ true)
         .setThreadCount(DEFAULT_DISK_CACHE_EXECUTOR_THREADS)
         .setName(DEFAULT_DISK_CACHE_EXECUTOR_NAME);
   }
@@ -113,13 +113,13 @@ public final class GlideExecutor implements ExecutorService {
    * Returns a new {@link Builder} with the default thread count returned from {@link
    * #calculateBestThreadCount()}, the {@link #DEFAULT_SOURCE_EXECUTOR_NAME} thread name prefix, and
    * the {@link
-   * com.bumptech.glide.load.engine.executor.GlideExecutor.UncaughtThrowableStrategy#DEFAULT}
+   * UncaughtThrowableStrategy#DEFAULT}
    * uncaught throwable strategy.
    *
    * <p>Source executors allow network operations on their threads.
    */
-  public static GlideExecutor.Builder newSourceBuilder() {
-    return new GlideExecutor.Builder(/* preventNetworkOperations= */ false)
+  public static Builder newSourceBuilder() {
+    return new Builder(/* preventNetworkOperations= */ false)
         .setThreadCount(calculateBestThreadCount())
         .setName(DEFAULT_SOURCE_EXECUTOR_NAME);
   }
@@ -159,7 +159,7 @@ public final class GlideExecutor implements ExecutorService {
    * Returns a new unlimited thread pool with zero core thread count to make sure no threads are
    * created by default, {@link #KEEP_ALIVE_TIME_MS} keep alive time, the {@link
    * #DEFAULT_SOURCE_UNLIMITED_EXECUTOR_NAME} thread name prefix, the {@link
-   * com.bumptech.glide.load.engine.executor.GlideExecutor.UncaughtThrowableStrategy#DEFAULT}
+   * UncaughtThrowableStrategy#DEFAULT}
    * uncaught throwable strategy, and the {@link SynchronousQueue} since using default unbounded
    * blocking queue, for example, {@link PriorityBlockingQueue} effectively won't create more than
    * {@code corePoolSize} threads. See <a href=
@@ -189,7 +189,7 @@ public final class GlideExecutor implements ExecutorService {
    *
    * <p>Animation executors do not allow network operations on their threads.
    */
-  public static GlideExecutor.Builder newAnimationBuilder() {
+  public static Builder newAnimationBuilder() {
     int bestThreadCount = calculateBestThreadCount();
     // We don't want to add a ton of threads running animations in parallel with our source and
     // disk cache executors. Doing so adds unnecessary CPU load and can also dramatically increase
@@ -198,7 +198,7 @@ public final class GlideExecutor implements ExecutorService {
     // once.
     int maximumPoolSize = bestThreadCount >= 4 ? 2 : 1;
 
-    return new GlideExecutor.Builder(/* preventNetworkOperations= */ true)
+    return new Builder(/* preventNetworkOperations= */ true)
         .setThreadCount(maximumPoolSize)
         .setName(DEFAULT_ANIMATION_EXECUTOR_NAME);
   }
@@ -384,7 +384,7 @@ public final class GlideExecutor implements ExecutorService {
   }
 
   /**
-   * A {@link java.util.concurrent.ThreadFactory} that builds threads slightly above priority {@link
+   * A {@link ThreadFactory} that builds threads slightly above priority {@link
    * android.os.Process#THREAD_PRIORITY_BACKGROUND}.
    */
   private static final class DefaultThreadFactory implements ThreadFactory {

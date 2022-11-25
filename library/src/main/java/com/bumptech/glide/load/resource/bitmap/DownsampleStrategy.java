@@ -87,7 +87,7 @@ public abstract class DownsampleStrategy {
   public static final DownsampleStrategy DEFAULT = CENTER_OUTSIDE;
 
   /**
-   * Indicates the {@link com.bumptech.glide.load.resource.bitmap.DownsampleStrategy} option that
+   * Indicates the {@link DownsampleStrategy} option that
    * will be used to calculate the sample size to use to downsample an image given the original and
    * target dimensions of the image.
    */

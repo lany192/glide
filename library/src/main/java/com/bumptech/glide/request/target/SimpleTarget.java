@@ -2,11 +2,11 @@ package com.bumptech.glide.request.target;
 
 import android.graphics.drawable.Drawable;
 import android.view.View;
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import com.bumptech.glide.util.Util;
 
 /**
- * A simple {@link com.bumptech.glide.request.target.Target} base class with default (usually no-op)
+ * A simple {@link Target} base class with default (usually no-op)
  * implementations of non essential methods that allows the caller to specify an exact width/height.
  * Typically use cases look something like this:
  *

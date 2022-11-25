@@ -7,8 +7,8 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
 import android.util.Log;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.bumptech.glide.util.Synthetic;
 import java.util.Arrays;
 import java.util.Collections;
@@ -16,9 +16,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * An {@link com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool} implementation that uses an
- * {@link com.bumptech.glide.load.engine.bitmap_recycle.LruPoolStrategy} to bucket {@link Bitmap}s
- * and then uses an LRU eviction policy to evict {@link android.graphics.Bitmap}s from the least
+ * An {@link BitmapPool} implementation that uses an
+ * {@link LruPoolStrategy} to bucket {@link Bitmap}s
+ * and then uses an LRU eviction policy to evict {@link Bitmap}s from the least
  * recently used bucket in order to keep the pool below a given maximum size limit.
  */
 public class LruBitmapPool implements BitmapPool {
@@ -59,7 +59,7 @@ public class LruBitmapPool implements BitmapPool {
    * Constructor for LruBitmapPool.
    *
    * @param maxSize The initial maximum size of the pool in bytes.
-   * @param allowedConfigs A white listed put of {@link android.graphics.Bitmap.Config} that are
+   * @param allowedConfigs A white listed put of {@link Bitmap.Config} that are
    *     allowed to be put into the pool. Configs not in the allowed put will be rejected.
    */
   // Public API.

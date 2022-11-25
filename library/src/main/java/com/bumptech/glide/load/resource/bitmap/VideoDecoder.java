@@ -13,10 +13,10 @@ import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.ParcelFileDescriptor;
 import android.util.Log;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.annotation.VisibleForTesting;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
+import android.support.annotation.VisibleForTesting;
 import com.bumptech.glide.load.Option;
 import com.bumptech.glide.load.Options;
 import com.bumptech.glide.load.ResourceDecoder;
@@ -52,7 +52,7 @@ public class VideoDecoder<T> implements ResourceDecoder<T, Bitmap> {
 
   /**
    * A long indicating the time position (in microseconds) of the target frame which will be
-   * retrieved. {@link android.media.MediaMetadataRetriever#getFrameAtTime(long)} is used to extract
+   * retrieved. {@link MediaMetadataRetriever#getFrameAtTime(long)} is used to extract
    * the video frame.
    *
    * <p>When retrieving the frame at the given time position, there is no guarantee that the data
@@ -199,7 +199,7 @@ public class VideoDecoder<T> implements ResourceDecoder<T, Bitmap> {
               outHeight,
               downsampleStrategy);
     } finally {
-      if (Build.VERSION.SDK_INT >= VERSION_CODES.Q) {
+      if (VERSION.SDK_INT >= VERSION_CODES.Q) {
         mediaMetadataRetriever.close();
       } else {
         mediaMetadataRetriever.release();
@@ -229,7 +229,7 @@ public class VideoDecoder<T> implements ResourceDecoder<T, Bitmap> {
     // getScaledFrameAtTime is not used). Given that this is an optimization only if
     // Target.SIZE_ORIGINAL is not used and not using getScaledFrameAtTime ever would match the
     // behavior of Glide in all versions of Android prior to OMR1, it's probably fine for now.
-    if (Build.VERSION.SDK_INT >= VERSION_CODES.O_MR1
+    if (VERSION.SDK_INT >= VERSION_CODES.O_MR1
         && outWidth != Target.SIZE_ORIGINAL
         && outHeight != Target.SIZE_ORIGINAL
         && strategy != DownsampleStrategy.NONE) {
@@ -353,7 +353,7 @@ public class VideoDecoder<T> implements ResourceDecoder<T, Bitmap> {
   }
 
   @Nullable
-  @TargetApi(Build.VERSION_CODES.O_MR1)
+  @TargetApi(VERSION_CODES.O_MR1)
   private static Bitmap decodeScaledFrame(
       MediaMetadataRetriever mediaMetadataRetriever,
       long frameTimeMicros,
@@ -415,7 +415,7 @@ public class VideoDecoder<T> implements ResourceDecoder<T, Bitmap> {
   private boolean isUnsupportedFormat(
       @NonNull T resource, MediaMetadataRetriever mediaMetadataRetriever) {
     // MediaFormat.KEY_MIME check below requires at least JELLY_BEAN
-    if (Build.VERSION.SDK_INT < VERSION_CODES.JELLY_BEAN) {
+    if (VERSION.SDK_INT < VERSION_CODES.JELLY_BEAN) {
       return false;
     }
 
@@ -504,7 +504,7 @@ public class VideoDecoder<T> implements ResourceDecoder<T, Bitmap> {
     }
   }
 
-  @RequiresApi(Build.VERSION_CODES.M)
+  @RequiresApi(VERSION_CODES.M)
   static final class ByteBufferInitializer implements MediaInitializer<ByteBuffer> {
 
     @Override

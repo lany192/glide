@@ -4,10 +4,10 @@ import android.content.Context;
 import android.content.res.Resources.Theme;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.GuardedBy;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.GuardedBy;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.bumptech.glide.GlideBuilder.LogRequestOrigins;
 import com.bumptech.glide.GlideContext;
 import com.bumptech.glide.Priority;
@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.concurrent.Executor;
 
 /**
- * A {@link Request} that loads a {@link com.bumptech.glide.load.engine.Resource} into a given
+ * A {@link Request} that loads a {@link Resource} into a given
  * {@link Target}.
  *
  * @param <R> The type of the resource that will be transcoded from the loaded resource.

@@ -10,8 +10,8 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.ParcelFileDescriptor;
-import androidx.annotation.Nullable;
-import androidx.tracing.Trace;
+import android.os.Trace;
+import android.support.annotation.Nullable;
 import com.bumptech.glide.GlideBuilder.EnableImageDecoderForBitmaps;
 import com.bumptech.glide.gifdecoder.GifDecoder;
 import com.bumptech.glide.load.ImageHeaderParser;
@@ -98,11 +98,15 @@ final class RegistryFactory {
         }
         isInitializingOrInitialized = true;
 
-        Trace.beginSection("Glide registry");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+          Trace.beginSection("Glide registry");
+        }
         try {
           return createAndInitRegistry(glide, manifestModules, annotationGeneratedModule);
         } finally {
-          Trace.endSection();
+          if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+            Trace.endSection();
+          }
         }
       }
     };

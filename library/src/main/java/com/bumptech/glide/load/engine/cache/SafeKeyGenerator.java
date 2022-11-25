@@ -1,7 +1,7 @@
 package com.bumptech.glide.load.engine.cache;
 
-import androidx.annotation.NonNull;
-import androidx.core.util.Pools;
+import android.support.annotation.NonNull;
+import android.support.v4.util.Pools;
 import com.bumptech.glide.load.Key;
 import com.bumptech.glide.util.LruCache;
 import com.bumptech.glide.util.Preconditions;
@@ -14,7 +14,7 @@ import java.security.NoSuchAlgorithmException;
 
 /**
  * A class that generates and caches safe and unique string file names from {@link
- * com.bumptech.glide.load.Key}s.
+ * Key}s.
  */
 // Public API.
 @SuppressWarnings("WeakerAccess")

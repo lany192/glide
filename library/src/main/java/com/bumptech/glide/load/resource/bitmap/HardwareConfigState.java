@@ -5,15 +5,15 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.util.Log;
-import androidx.annotation.GuardedBy;
-import androidx.annotation.VisibleForTesting;
+import android.support.annotation.GuardedBy;
+import android.support.annotation.VisibleForTesting;
 import com.bumptech.glide.util.Util;
 import java.io.File;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
- * State and constants for interacting with {@link android.graphics.Bitmap.Config#HARDWARE} on
+ * State and constants for interacting with {@link Bitmap.Config#HARDWARE} on
  * Android O+.
  */
 public final class HardwareConfigState {

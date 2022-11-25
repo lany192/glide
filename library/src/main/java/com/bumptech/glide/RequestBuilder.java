@@ -10,11 +10,11 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.widget.ImageView;
-import androidx.annotation.CheckResult;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RawRes;
+import android.support.annotation.CheckResult;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.RawRes;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.Transformation;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -49,7 +49,7 @@ import java.util.concurrent.Executor;
  * A generic class that can handle setting options and staring loads for generic resource types.
  *
  * @param <TranscodeType> The type of resource that will be delivered to the {@link
- *     com.bumptech.glide.request.target.Target}.
+ *     Target}.
  */
 // Public API.
 @SuppressWarnings({"unused", "WeakerAccess"})
@@ -290,7 +290,7 @@ public class RequestBuilder<TranscodeType> extends BaseRequestOptions<RequestBui
    *
    * <p>The given {@link RequestBuilder} will start and potentially override a fallback drawable if
    * it's set on this {@link RequestBuilder} via {@link
-   * RequestOptions#fallback(android.graphics.drawable.Drawable)} or {@link
+   * RequestOptions#fallback(Drawable)} or {@link
    * RequestOptions#fallback(int)}.
    *
    * @return This {@link RequestBuilder}.
@@ -471,13 +471,13 @@ public class RequestBuilder<TranscodeType> extends BaseRequestOptions<RequestBui
    *
    * <p>Note - The thumbnail resource will be smaller than the size requested so the target (or
    * {@link ImageView}) must be able to scale the thumbnail appropriately. See {@link
-   * android.widget.ImageView.ScaleType}.
+   * ImageView.ScaleType}.
    *
    * <p>Almost all options will be copied from the original load, including the {@link
    * com.bumptech.glide.load.model.ModelLoader}, {@link com.bumptech.glide.load.ResourceDecoder},
-   * and {@link com.bumptech.glide.load.Transformation}s. However, {@link
-   * com.bumptech.glide.request.RequestOptions#placeholder(int)} and {@link
-   * com.bumptech.glide.request.RequestOptions#error(int)}, and {@link #listener(RequestListener)}
+   * and {@link Transformation}s. However, {@link
+   * RequestOptions#placeholder(int)} and {@link
+   * RequestOptions#error(int)}, and {@link #listener(RequestListener)}
    * will only be used on the full size load and will not be copied for the thumbnail load.
    *
    * <p>Recursive calls to thumbnail are supported.
@@ -592,16 +592,16 @@ public class RequestBuilder<TranscodeType> extends BaseRequestOptions<RequestBui
   }
 
   /**
-   * Returns a request builder to load the given {@link java.lang.String}.
+   * Returns a request builder to load the given {@link String}.
    *
    * <p>Note - this method caches data using only the given String as the cache key. If the data is
    * a Uri outside of your control, or you otherwise expect the data represented by the given String
    * to change without the String identifier changing, Consider using {@link
-   * com.bumptech.glide.request.RequestOptions#signature(com.bumptech.glide.load.Key)} to mixin a
+   * RequestOptions#signature(com.bumptech.glide.load.Key)} to mixin a
    * signature you create that identifies the data currently at the given String that will
    * invalidate the cache if that data changes. Alternatively, using {@link
-   * com.bumptech.glide.load.engine.DiskCacheStrategy#NONE} and/or {@link
-   * com.bumptech.glide.request.RequestOptions#skipMemoryCache(boolean)} may be appropriate.
+   * DiskCacheStrategy#NONE} and/or {@link
+   * RequestOptions#skipMemoryCache(boolean)} may be appropriate.
    *
    * @see #load(Object)
    * @param string A file path, or a uri or url handled by {@link
@@ -620,11 +620,11 @@ public class RequestBuilder<TranscodeType> extends BaseRequestOptions<RequestBui
    * <p>Note - this method caches data at Uris using only the Uri itself as the cache key. The data
    * represented by Uris from some content providers may change without the Uri changing, which
    * means using this method can lead to displaying stale data. Consider using {@link
-   * com.bumptech.glide.request.RequestOptions#signature(com.bumptech.glide.load.Key)} to mixin a
+   * RequestOptions#signature(com.bumptech.glide.load.Key)} to mixin a
    * signature you create based on the data at the given Uri that will invalidate the cache if that
    * data changes. Alternatively, using {@link
-   * com.bumptech.glide.load.engine.DiskCacheStrategy#NONE} and/or {@link
-   * com.bumptech.glide.request.RequestOptions#skipMemoryCache(boolean)} may be appropriate.
+   * DiskCacheStrategy#NONE} and/or {@link
+   * RequestOptions#skipMemoryCache(boolean)} may be appropriate.
    *
    * @see #load(Object)
    * @param uri The Uri representing the image. Must be of a type handled by {@link
@@ -643,11 +643,11 @@ public class RequestBuilder<TranscodeType> extends BaseRequestOptions<RequestBui
    * <p>Note - this method caches data for Files using only the file path itself as the cache key.
    * The data in the File can change so using this method can lead to displaying stale data. If you
    * expect the data in the File to change, Consider using {@link
-   * com.bumptech.glide.request.RequestOptions#signature(com.bumptech.glide.load.Key)} to mixin a
+   * RequestOptions#signature(com.bumptech.glide.load.Key)} to mixin a
    * signature you create that identifies the data currently in the File that will invalidate the
    * cache if that data changes. Alternatively, using {@link
-   * com.bumptech.glide.load.engine.DiskCacheStrategy#NONE} and/or {@link
-   * com.bumptech.glide.request.RequestOptions#skipMemoryCache(boolean)} may be appropriate.
+   * DiskCacheStrategy#NONE} and/or {@link
+   * RequestOptions#skipMemoryCache(boolean)} may be appropriate.
    *
    * @see #load(Object)
    * @param file The File containing the image
@@ -670,14 +670,14 @@ public class RequestBuilder<TranscodeType> extends BaseRequestOptions<RequestBui
    * will see the most up to date versions of your Drawables, but during development if you do not
    * increment your version code before each install and you replace a Drawable with different data
    * without changing the Drawable name, you may see inconsistent cached data. To get around this,
-   * consider using {@link com.bumptech.glide.load.engine.DiskCacheStrategy#NONE} via {@link
-   * RequestOptions#diskCacheStrategy(com.bumptech.glide.load.engine.DiskCacheStrategy)} during
+   * consider using {@link DiskCacheStrategy#NONE} via {@link
+   * RequestOptions#diskCacheStrategy(DiskCacheStrategy)} during
    * development, and re-enabling the default {@link
-   * com.bumptech.glide.load.engine.DiskCacheStrategy#RESOURCE} for release builds.
+   * DiskCacheStrategy#RESOURCE} for release builds.
    *
-   * <p>This method will load non-{@link android.graphics.Bitmap} resources like {@link
+   * <p>This method will load non-{@link Bitmap} resources like {@link
    * android.graphics.drawable.VectorDrawable}s. Although Glide makes a best effort to apply {@link
-   * com.bumptech.glide.load.Transformation}s to these {@link Drawable}s by either extracting the
+   * Transformation}s to these {@link Drawable}s by either extracting the
    * underlying {@link Bitmap} or by converting the {@link Drawable} to a {@link Bitmap}, Glide is
    * still not able to transform all types of resources. Animated {@link Drawable}s cannot be
    * transformed (other than {@link com.bumptech.glide.load.resource.gif.GifDrawable}). To avoid
@@ -685,11 +685,11 @@ public class RequestBuilder<TranscodeType> extends BaseRequestOptions<RequestBui
    * methods like {@link RequestOptions#optionalTransform(Class, Transformation)}.
    *
    * <p>In some cases converting {@link Drawable}s to {@link Bitmap}s may be inefficient. Use this
-   * method, especially in conjunction with {@link com.bumptech.glide.load.Transformation}s with
+   * method, especially in conjunction with {@link Transformation}s with
    * caution for non-{@link Bitmap} {@link Drawable}s.
    *
    * @see #load(Integer)
-   * @see com.bumptech.glide.signature.AndroidResourceSignature
+   * @see AndroidResourceSignature
    */
   @NonNull
   @CheckResult
@@ -703,9 +703,9 @@ public class RequestBuilder<TranscodeType> extends BaseRequestOptions<RequestBui
    *
    * @param url The URL representing the image.
    * @see #load(Object)
-   * @deprecated The {@link java.net.URL} class has <a href="http://goo.gl/c4hHNu">a number of
+   * @deprecated The {@link URL} class has <a href="http://goo.gl/c4hHNu">a number of
    *     performance problems</a> and should generally be avoided when possible. Prefer {@link
-   *     #load(android.net.Uri)} or {@link #load(String)}.
+   *     #load(Uri)} or {@link #load(String)}.
    */
   @Deprecated
   @CheckResult
@@ -836,7 +836,7 @@ public class RequestBuilder<TranscodeType> extends BaseRequestOptions<RequestBui
    *
    * @see RequestManager#clear(Target)
    * @param view The view to cancel previous loads for and load the new resource into.
-   * @return The {@link com.bumptech.glide.request.target.Target} used to wrap the given {@link
+   * @return The {@link Target} used to wrap the given {@link
    *     ImageView}.
    */
   @NonNull
@@ -884,10 +884,10 @@ public class RequestBuilder<TranscodeType> extends BaseRequestOptions<RequestBui
    * Returns a future that can be used to do a blocking get on a background thread.
    *
    * @param width The desired width in pixels, or {@link Target#SIZE_ORIGINAL}. This will be
-   *     overridden by {@link com.bumptech.glide.request.RequestOptions#override(int, int)} if
+   *     overridden by {@link RequestOptions#override(int, int)} if
    *     previously called.
    * @param height The desired height in pixels, or {@link Target#SIZE_ORIGINAL}. This will be
-   *     overridden by {@link com.bumptech.glide.request.RequestOptions#override(int, int)}} if
+   *     overridden by {@link RequestOptions#override(int, int)}} if
    *     previously called).
    * @see RequestManager#clear(Target)
    * @deprecated Use {@link #submit(int, int)} instead.
@@ -918,10 +918,10 @@ public class RequestBuilder<TranscodeType> extends BaseRequestOptions<RequestBui
    * Returns a future that can be used to do a blocking get on a background thread.
    *
    * @param width The desired width in pixels, or {@link Target#SIZE_ORIGINAL}. This will be
-   *     overridden by {@link com.bumptech.glide.request.RequestOptions#override(int, int)} if
+   *     overridden by {@link RequestOptions#override(int, int)} if
    *     previously called.
    * @param height The desired height in pixels, or {@link Target#SIZE_ORIGINAL}. This will be
-   *     overridden by {@link com.bumptech.glide.request.RequestOptions#override(int, int)}} if
+   *     overridden by {@link RequestOptions#override(int, int)}} if
    *     previously called).
    */
   @NonNull
@@ -944,14 +944,14 @@ public class RequestBuilder<TranscodeType> extends BaseRequestOptions<RequestBui
    * when loading the image(s) into the UI in a subsequent request).
    *
    * @param width The desired width in pixels, or {@link Target#SIZE_ORIGINAL}. This will be
-   *     overridden by {@link com.bumptech.glide.request.RequestOptions#override(int, int)} if
+   *     overridden by {@link RequestOptions#override(int, int)} if
    *     previously called.
    * @param height The desired height in pixels, or {@link Target#SIZE_ORIGINAL}. This will be
-   *     overridden by {@link com.bumptech.glide.request.RequestOptions#override(int, int)}} if
+   *     overridden by {@link RequestOptions#override(int, int)}} if
    *     previously called).
    * @return A {@link Target} that can be used to cancel the load via {@link
    *     RequestManager#clear(Target)}.
-   * @see com.bumptech.glide.ListPreloader
+   * @see ListPreloader
    */
   @NonNull
   public Target<TranscodeType> preload(int width, int height) {

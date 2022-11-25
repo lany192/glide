@@ -1,6 +1,6 @@
 package com.bumptech.glide.load.engine;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.Key;
 import com.bumptech.glide.load.Transformation;
@@ -12,7 +12,7 @@ import java.io.File;
 import java.util.List;
 
 /**
- * Generates {@link com.bumptech.glide.load.data.DataFetcher DataFetchers} from cache files
+ * Generates {@link DataFetcher DataFetchers} from cache files
  * containing downsampled/transformed resource data.
  */
 class ResourceCacheGenerator implements DataFetcherGenerator, DataFetcher.DataCallback<Object> {

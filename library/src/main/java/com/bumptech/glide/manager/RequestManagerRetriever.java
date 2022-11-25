@@ -5,23 +5,23 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.ContextWrapper;
-import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.util.ArrayMap;
 import android.util.Log;
 import android.view.View;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.VisibleForTesting;
-import androidx.collection.ArrayMap;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.VisibleForTesting;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.GlideBuilder.WaitForFramesAfterTrimMemory;
@@ -35,7 +35,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * A collection of static methods for creating new {@link com.bumptech.glide.RequestManager}s or
+ * A collection of static methods for creating new {@link RequestManager}s or
  * retrieving existing ones from activities and fragment.
  */
 public class RequestManagerRetriever implements Handler.Callback {
@@ -324,11 +324,11 @@ public class RequestManagerRetriever implements Handler.Callback {
   // non-support Fragments.
   @SuppressWarnings("deprecation")
   @Deprecated
-  @TargetApi(Build.VERSION_CODES.O)
+  @TargetApi(VERSION_CODES.O)
   private void findAllFragmentsWithViews(
       @NonNull android.app.FragmentManager fragmentManager,
       @NonNull ArrayMap<View, android.app.Fragment> result) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+    if (VERSION.SDK_INT >= VERSION_CODES.O) {
       for (android.app.Fragment fragment : fragmentManager.getFragments()) {
         if (fragment.getView() != null) {
           result.put(fragment.getView(), fragment);
@@ -377,9 +377,9 @@ public class RequestManagerRetriever implements Handler.Callback {
     }
   }
 
-  @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+  @TargetApi(VERSION_CODES.JELLY_BEAN_MR1)
   private static void assertNotDestroyed(@NonNull Activity activity) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && activity.isDestroyed()) {
+    if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN_MR1 && activity.isDestroyed()) {
       throw new IllegalArgumentException("You cannot start a load for a destroyed activity");
     }
   }
@@ -390,13 +390,13 @@ public class RequestManagerRetriever implements Handler.Callback {
   @SuppressWarnings("deprecation")
   @Deprecated
   @NonNull
-  @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+  @TargetApi(VERSION_CODES.JELLY_BEAN_MR1)
   public RequestManager get(@NonNull android.app.Fragment fragment) {
     if (fragment.getActivity() == null) {
       throw new IllegalArgumentException(
           "You cannot start a load on a fragment before it is attached");
     }
-    if (Util.isOnBackgroundThread() || Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
+    if (Util.isOnBackgroundThread() || VERSION.SDK_INT < VERSION_CODES.JELLY_BEAN_MR1) {
       return get(fragment.getActivity().getApplicationContext());
     } else {
       // In some unusual cases, it's possible to have a Fragment not hosted by an activity. There's

@@ -10,10 +10,10 @@ import android.view.View.OnAttachStateChangeListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
-import androidx.annotation.IdRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.VisibleForTesting;
+import android.support.annotation.IdRes;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.VisibleForTesting;
 import com.bumptech.glide.R;
 import com.bumptech.glide.request.Request;
 import com.bumptech.glide.request.transition.Transition;
@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * A base {@link Target} for loading resources ({@link android.graphics.Bitmap}, {@link Drawable}
  * etc) into {@link View}s that provides default implementations for most methods and can determine
- * the size of views using a {@link android.view.ViewTreeObserver.OnDrawListener}.
+ * the size of views using a {@link ViewTreeObserver.OnDrawListener}.
  *
  * @param <T> The specific subclass of view wrapped by this target (e.g. {@link
  *     android.widget.ImageView})
@@ -172,17 +172,17 @@ public abstract class CustomViewTarget<T extends View, Z> implements Target<Z> {
     return this;
   }
 
-  /** Returns the wrapped {@link android.view.View}. */
+  /** Returns the wrapped {@link View}. */
   @NonNull
   public final T getView() {
     return view;
   }
 
   /**
-   * Determines the size of the view by first checking {@link android.view.View#getWidth()} and
-   * {@link android.view.View#getHeight()}. If one or both are zero, it then checks the view's
+   * Determines the size of the view by first checking {@link View#getWidth()} and
+   * {@link View#getHeight()}. If one or both are zero, it then checks the view's
    * {@link LayoutParams}. If one or both of the params width and height are less than or equal to
-   * zero, it then adds an {@link android.view.ViewTreeObserver.OnPreDrawListener} which waits until
+   * zero, it then adds an {@link ViewTreeObserver.OnPreDrawListener} which waits until
    * the view has been measured before calling the callback with the view's drawn width and height.
    *
    * @param cb {@inheritDoc}
@@ -223,7 +223,7 @@ public abstract class CustomViewTarget<T extends View, Z> implements Target<Z> {
     setTag(request);
   }
 
-  /** Returns any stored request using {@link android.view.View#getTag()}. */
+  /** Returns any stored request using {@link View#getTag()}. */
   @Override
   @Nullable
   public final Request getRequest() {

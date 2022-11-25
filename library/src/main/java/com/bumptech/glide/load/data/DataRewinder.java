@@ -1,6 +1,6 @@
 package com.bumptech.glide.load.data;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import java.io.IOException;
 
 /**
@@ -12,19 +12,19 @@ public interface DataRewinder<T> {
 
   /**
    * A factory interface for producing individual {@link
-   * com.bumptech.glide.load.data.DataRewinder}s.
+   * DataRewinder}s.
    *
-   * @param <T> The type of data that the {@link com.bumptech.glide.load.data.DataRewinder} will
+   * @param <T> The type of data that the {@link DataRewinder} will
    *     wrap.
    */
   interface Factory<T> {
-    /** Returns a new {@link com.bumptech.glide.load.data.DataRewinder} wrapping the given data. */
+    /** Returns a new {@link DataRewinder} wrapping the given data. */
     @NonNull
     DataRewinder<T> build(@NonNull T data);
 
     /**
      * Returns the class of data this factory can produce {@link
-     * com.bumptech.glide.load.data.DataRewinder}s for.
+     * DataRewinder}s for.
      */
     @NonNull
     Class<T> getDataClass();

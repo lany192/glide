@@ -4,7 +4,7 @@ import android.content.ContentResolver;
 import android.content.res.AssetFileDescriptor;
 import android.net.Uri;
 import android.os.ParcelFileDescriptor;
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import com.bumptech.glide.load.Options;
 import com.bumptech.glide.load.data.AssetFileDescriptorLocalUriFetcher;
 import com.bumptech.glide.load.data.DataFetcher;
@@ -18,12 +18,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * A ModelLoader for {@link android.net.Uri}s that handles local {@link android.net.Uri}s directly
- * and routes remote {@link android.net.Uri}s to a wrapped {@link
- * com.bumptech.glide.load.model.ModelLoader} that handles {@link
- * com.bumptech.glide.load.model.GlideUrl}s.
+ * A ModelLoader for {@link Uri}s that handles local {@link Uri}s directly
+ * and routes remote {@link Uri}s to a wrapped {@link
+ * ModelLoader} that handles {@link
+ * GlideUrl}s.
  *
- * @param <Data> The type of data that will be retrieved for {@link android.net.Uri}s.
+ * @param <Data> The type of data that will be retrieved for {@link Uri}s.
  */
 public class UriLoader<Data> implements ModelLoader<Uri, Data> {
   private static final Set<String> SCHEMES =

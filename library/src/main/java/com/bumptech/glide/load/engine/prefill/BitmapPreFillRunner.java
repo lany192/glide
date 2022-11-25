@@ -5,8 +5,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.util.Log;
-import androidx.annotation.NonNull;
-import androidx.annotation.VisibleForTesting;
+import android.support.annotation.NonNull;
+import android.support.annotation.VisibleForTesting;
 import com.bumptech.glide.load.Key;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.engine.cache.MemoryCache;
@@ -19,8 +19,8 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
- * A class that allocates {@link android.graphics.Bitmap Bitmaps} to make sure that the {@link
- * com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool} is pre-populated.
+ * A class that allocates {@link Bitmap Bitmaps} to make sure that the {@link
+ * BitmapPool} is pre-populated.
  *
  * <p>By posting to the main thread with backoffs, we try to avoid ANRs when the garbage collector
  * gets into a state where a high percentage of {@link Bitmap} allocations trigger a stop the world
@@ -91,8 +91,8 @@ final class BitmapPreFillRunner implements Runnable {
   }
 
   /**
-   * Attempts to allocate {@link android.graphics.Bitmap}s and returns {@code true} if there are
-   * more {@link android.graphics.Bitmap}s to allocate and {@code false} otherwise.
+   * Attempts to allocate {@link Bitmap}s and returns {@code true} if there are
+   * more {@link Bitmap}s to allocate and {@code false} otherwise.
    */
   @VisibleForTesting
   boolean allocate() {

@@ -4,8 +4,8 @@ import android.graphics.Bitmap;
 import android.widget.ImageView;
 
 /**
- * A {@link com.bumptech.glide.request.target.Target} that can display an {@link
- * android.graphics.Bitmap} in an {@link android.widget.ImageView}.
+ * A {@link Target} that can display an {@link
+ * Bitmap} in an {@link ImageView}.
  */
 public class BitmapImageViewTarget extends ImageViewTarget<Bitmap> {
   // Public API.
@@ -25,8 +25,8 @@ public class BitmapImageViewTarget extends ImageViewTarget<Bitmap> {
   }
 
   /**
-   * Sets the {@link android.graphics.Bitmap} on the view using {@link
-   * android.widget.ImageView#setImageBitmap(android.graphics.Bitmap)}.
+   * Sets the {@link Bitmap} on the view using {@link
+   * ImageView#setImageBitmap(Bitmap)}.
    *
    * @param resource The bitmap to display.
    */

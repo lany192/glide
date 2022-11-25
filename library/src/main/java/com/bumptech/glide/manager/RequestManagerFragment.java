@@ -6,9 +6,9 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.os.Build;
 import android.util.Log;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.VisibleForTesting;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.VisibleForTesting;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.util.Synthetic;
@@ -17,13 +17,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * A view-less {@link android.app.Fragment} used to safely store an {@link
- * com.bumptech.glide.RequestManager} that can be used to start, stop and manage Glide requests
+ * A view-less {@link Fragment} used to safely store an {@link
+ * RequestManager} that can be used to start, stop and manage Glide requests
  * started for targets the fragment or activity this fragment is a child of.
  *
- * @see com.bumptech.glide.manager.SupportRequestManagerFragment
- * @see com.bumptech.glide.manager.RequestManagerRetriever
- * @see com.bumptech.glide.RequestManager
+ * @see SupportRequestManagerFragment
+ * @see RequestManagerRetriever
+ * @see RequestManager
  */
 @SuppressWarnings("DeprecatedIsStillUsed")
 @Deprecated
@@ -55,7 +55,7 @@ public class RequestManagerFragment extends Fragment {
   }
 
   /**
-   * Sets the current {@link com.bumptech.glide.RequestManager}.
+   * Sets the current {@link RequestManager}.
    *
    * @param requestManager The request manager to use.
    */
@@ -68,7 +68,7 @@ public class RequestManagerFragment extends Fragment {
     return lifecycle;
   }
 
-  /** Returns the current {@link com.bumptech.glide.RequestManager} or null if none exists. */
+  /** Returns the current {@link RequestManager} or null if none exists. */
   @Nullable
   public RequestManager getRequestManager() {
     return requestManager;

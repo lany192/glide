@@ -4,12 +4,12 @@ import android.content.ContentResolver;
 import android.content.UriMatcher;
 import android.net.Uri;
 import android.provider.ContactsContract;
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
-/** Fetches an {@link java.io.InputStream} for a local {@link android.net.Uri}. */
+/** Fetches an {@link InputStream} for a local {@link Uri}. */
 public class StreamLocalUriFetcher extends LocalUriFetcher<InputStream> {
   /** A lookup uri (e.g. content://com.android.contacts/contacts/lookup/3570i61d948d30808e537) */
   private static final int ID_CONTACTS_LOOKUP = 1;

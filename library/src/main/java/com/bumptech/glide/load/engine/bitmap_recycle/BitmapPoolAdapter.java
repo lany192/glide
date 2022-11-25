@@ -1,11 +1,11 @@
 package com.bumptech.glide.load.engine.bitmap_recycle;
 
 import android.graphics.Bitmap;
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 /**
- * An {@link com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool BitmapPool} implementation
- * that rejects all {@link android.graphics.Bitmap Bitmap}s added to it and always returns {@code
+ * An {@link BitmapPool BitmapPool} implementation
+ * that rejects all {@link Bitmap Bitmap}s added to it and always returns {@code
  * null} from get.
  */
 public class BitmapPoolAdapter implements BitmapPool {

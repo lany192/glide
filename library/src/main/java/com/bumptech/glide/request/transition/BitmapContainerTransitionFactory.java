@@ -7,11 +7,11 @@ import android.graphics.drawable.Drawable;
 import com.bumptech.glide.load.DataSource;
 
 /**
- * A {@link TransitionFactory} for complex types that have a {@link android.graphics.Bitmap} inside.
- * The transitioning bitmap is wrapped in a {@link android.graphics.drawable.BitmapDrawable}. Most
+ * A {@link TransitionFactory} for complex types that have a {@link Bitmap} inside.
+ * The transitioning bitmap is wrapped in a {@link BitmapDrawable}. Most
  * commonly used with {@link DrawableCrossFadeFactory}.
  *
- * @param <R> The type of the composite object that contains the {@link android.graphics.Bitmap} to
+ * @param <R> The type of the composite object that contains the {@link Bitmap} to
  *     be transitioned.
  */
 public abstract class BitmapContainerTransitionFactory<R> implements TransitionFactory<R> {

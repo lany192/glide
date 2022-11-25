@@ -4,8 +4,8 @@ import android.content.res.AssetFileDescriptor;
 import android.net.Uri;
 import android.os.ParcelFileDescriptor;
 import android.text.TextUtils;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.bumptech.glide.load.Options;
 import java.io.File;
 import java.io.InputStream;
@@ -14,7 +14,7 @@ import java.io.InputStream;
  * A model loader for handling certain string models. Handles paths, urls, and any uri string with a
  * scheme handled by {@link android.content.ContentResolver#openInputStream(Uri)}.
  *
- * @param <Data> The type of data that will be loaded from the given {@link java.lang.String}.
+ * @param <Data> The type of data that will be loaded from the given {@link String}.
  */
 public class StringLoader<Data> implements ModelLoader<String, Data> {
   private final ModelLoader<Uri, Data> uriLoader;

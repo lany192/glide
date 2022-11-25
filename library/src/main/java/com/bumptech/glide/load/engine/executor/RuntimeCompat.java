@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.util.regex.Pattern;
 
-/** Compatibility methods for {@link java.lang.Runtime}. */
+/** Compatibility methods for {@link Runtime}. */
 final class RuntimeCompat {
   private static final String TAG = "GlideRuntimeCompat";
   private static final String CPU_NAME_REGEX = "cpu[0-9]+";

@@ -5,8 +5,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.os.Build;
 import android.os.ParcelFileDescriptor;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
+import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import com.bumptech.glide.load.ImageHeaderParser;
 import com.bumptech.glide.load.ImageHeaderParser.ImageType;
 import com.bumptech.glide.load.ImageHeaderParserUtils;
@@ -30,9 +30,9 @@ import java.util.List;
  */
 interface ImageReader {
   @Nullable
-  Bitmap decodeBitmap(BitmapFactory.Options options) throws IOException;
+  Bitmap decodeBitmap(Options options) throws IOException;
 
-  ImageHeaderParser.ImageType getImageType() throws IOException;
+  ImageType getImageType() throws IOException;
 
   int getImageOrientation() throws IOException;
 
@@ -190,12 +190,12 @@ interface ImageReader {
 
     @Nullable
     @Override
-    public Bitmap decodeBitmap(BitmapFactory.Options options) throws IOException {
+    public Bitmap decodeBitmap(Options options) throws IOException {
       return BitmapFactory.decodeStream(dataRewinder.rewindAndGet(), null, options);
     }
 
     @Override
-    public ImageHeaderParser.ImageType getImageType() throws IOException {
+    public ImageType getImageType() throws IOException {
       return ImageHeaderParserUtils.getType(parsers, dataRewinder.rewindAndGet(), byteArrayPool);
     }
 
@@ -229,13 +229,13 @@ interface ImageReader {
 
     @Nullable
     @Override
-    public Bitmap decodeBitmap(BitmapFactory.Options options) throws IOException {
+    public Bitmap decodeBitmap(Options options) throws IOException {
       return BitmapFactory.decodeFileDescriptor(
           dataRewinder.rewindAndGet().getFileDescriptor(), null, options);
     }
 
     @Override
-    public ImageHeaderParser.ImageType getImageType() throws IOException {
+    public ImageType getImageType() throws IOException {
       return ImageHeaderParserUtils.getType(parsers, dataRewinder, byteArrayPool);
     }
 

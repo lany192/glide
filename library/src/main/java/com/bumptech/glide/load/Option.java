@@ -1,7 +1,7 @@
 package com.bumptech.glide.load;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.bumptech.glide.util.Preconditions;
 import java.security.MessageDigest;
 
@@ -61,7 +61,7 @@ public final class Option<T> {
 
   /**
    * Returns a new {@link Option} that uses the given {@link
-   * com.bumptech.glide.load.Option.CacheKeyUpdater} to update disk cache keys.
+   * CacheKeyUpdater} to update disk cache keys.
    *
    * @param key A unique package prefixed {@link String} that identifies this option (must be stable
    *     across builds, so {@link Class#getName()} should <em>not</em> be used).
@@ -74,7 +74,7 @@ public final class Option<T> {
 
   /**
    * Returns a new {@link Option} that uses the given {@link
-   * com.bumptech.glide.load.Option.CacheKeyUpdater} to update disk cache keys and provides the
+   * CacheKeyUpdater} to update disk cache keys and provides the
    * given value as the default value.
    *
    * @param key A unique package prefixed {@link String} that identifies this option (must be stable
@@ -103,7 +103,7 @@ public final class Option<T> {
 
   /**
    * Updates the given {@link MessageDigest} used to construct a cache key with the given value
-   * using the {@link com.bumptech.glide.load.Option.CacheKeyUpdater} optionally provided in the
+   * using the {@link CacheKeyUpdater} optionally provided in the
    * constructor.
    */
   public void update(@NonNull T value, @NonNull MessageDigest messageDigest) {

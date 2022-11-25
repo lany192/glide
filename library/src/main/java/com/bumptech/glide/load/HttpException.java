@@ -1,6 +1,6 @@
 package com.bumptech.glide.load;
 
-import androidx.annotation.Nullable;
+import android.support.annotation.Nullable;
 import java.io.IOException;
 
 /**

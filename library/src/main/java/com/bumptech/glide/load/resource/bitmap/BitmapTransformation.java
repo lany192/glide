@@ -2,7 +2,7 @@ package com.bumptech.glide.load.resource.bitmap;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.Transformation;
 import com.bumptech.glide.load.engine.Resource;
@@ -13,9 +13,9 @@ import java.nio.charset.Charset;
 import java.security.MessageDigest;
 
 /**
- * A simple {@link com.bumptech.glide.load.Transformation} for transforming {@link
- * android.graphics.Bitmap}s that abstracts away dealing with {@link
- * com.bumptech.glide.load.engine.Resource} objects for subclasses.
+ * A simple {@link Transformation} for transforming {@link
+ * Bitmap}s that abstracts away dealing with {@link
+ * Resource} objects for subclasses.
  *
  * <p>Use cases will look something like this:
  *
@@ -52,9 +52,9 @@ import java.security.MessageDigest;
  *
  * <p>Using the fully qualified class name as a static final {@link String} (not {@link
  * Class#getName()} to avoid proguard obfuscation) is an easy way to implement {@link
- * #updateDiskCacheKey(java.security.MessageDigest)}} correctly. If additional arguments are
+ * #updateDiskCacheKey(MessageDigest)}} correctly. If additional arguments are
  * required they can be passed in to the constructor of the {@code Transformation} and then used to
- * update the {@link java.security.MessageDigest} passed in to {@link
+ * update the {@link MessageDigest} passed in to {@link
  * #updateDiskCacheKey(MessageDigest)}. If arguments are primitive types, they can typically easily
  * be serialized using {@link java.nio.ByteBuffer}. {@link String} types can be serialized with
  * {@link String#getBytes(Charset)} using the constant {@link #CHARSET}.
@@ -92,7 +92,7 @@ public abstract class BitmapTransformation implements Transformation<Bitmap> {
   }
 
   /**
-   * Transforms the given {@link android.graphics.Bitmap} based on the given dimensions and returns
+   * Transforms the given {@link Bitmap} based on the given dimensions and returns
    * the transformed result.
    *
    * <p>The provided Bitmap, toTransform, should not be recycled or returned to the pool. Glide will
@@ -104,14 +104,14 @@ public abstract class BitmapTransformation implements Transformation<Bitmap> {
    * returned to the BitmapPool and/or recycled.
    *
    * <p>outWidth and outHeight will never be {@link
-   * com.bumptech.glide.request.target.Target#SIZE_ORIGINAL}, this class converts them to be the
+   * Target#SIZE_ORIGINAL}, this class converts them to be the
    * size of the Bitmap we're going to transform before calling this method.
    *
-   * @param pool A {@link com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool} that can be used
+   * @param pool A {@link BitmapPool} that can be used
    *     to obtain and return intermediate {@link Bitmap}s used in this transformation. For every
-   *     {@link android.graphics.Bitmap} obtained from the pool during this transformation, a {@link
-   *     android.graphics.Bitmap} must also be returned.
-   * @param toTransform The {@link android.graphics.Bitmap} to transform.
+   *     {@link Bitmap} obtained from the pool during this transformation, a {@link
+   *     Bitmap} must also be returned.
+   * @param toTransform The {@link Bitmap} to transform.
    * @param outWidth The ideal width of the transformed bitmap (the transformed width does not need
    *     to match exactly).
    * @param outHeight The ideal height of the transformed bitmap (the transformed height does not

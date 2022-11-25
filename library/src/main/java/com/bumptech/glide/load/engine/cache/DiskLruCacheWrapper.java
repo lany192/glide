@@ -15,7 +15,7 @@ import java.io.IOException;
  * The default DiskCache implementation. There must be no more than one active instance for a given
  * directory at a time.
  *
- * @see #get(java.io.File, long)
+ * @see #get(File, long)
  */
 public class DiskLruCacheWrapper implements DiskCache {
   private static final String TAG = "DiskLruCacheWrapper";
@@ -93,7 +93,7 @@ public class DiskLruCacheWrapper implements DiskCache {
       // It is possible that the there will be a put in between these two gets. If so that shouldn't
       // be a problem because we will always put the same value at the same key so our input streams
       // will still represent the same data.
-      final DiskLruCache.Value value = getDiskCache().get(safeKey);
+      final Value value = getDiskCache().get(safeKey);
       if (value != null) {
         result = value.getFile(0);
       }

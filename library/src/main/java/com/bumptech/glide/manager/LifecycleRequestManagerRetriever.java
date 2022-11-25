@@ -1,10 +1,9 @@
 package com.bumptech.glide.manager;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.Lifecycle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.manager.RequestManagerRetriever.RequestManagerFactory;
@@ -15,6 +14,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import android.arch.lifecycle.Lifecycle;
 
 final class LifecycleRequestManagerRetriever {
   @Synthetic final Map<Lifecycle, RequestManager> lifecycleToRequestManager = new HashMap<>();

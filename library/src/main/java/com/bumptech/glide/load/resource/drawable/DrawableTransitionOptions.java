@@ -1,7 +1,7 @@
 package com.bumptech.glide.load.resource.drawable;
 
 import android.graphics.drawable.Drawable;
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import com.bumptech.glide.TransitionOptions;
 import com.bumptech.glide.request.transition.DrawableCrossFadeFactory;
 import com.bumptech.glide.request.transition.TransitionFactory;
@@ -80,7 +80,7 @@ public final class DrawableTransitionOptions
    *
    * @param duration The duration of the animation, see {@code
    *     DrawableCrossFadeFactory.Builder(int)}
-   * @see com.bumptech.glide.request.transition.DrawableCrossFadeFactory.Builder
+   * @see DrawableCrossFadeFactory.Builder
    */
   @NonNull
   public DrawableTransitionOptions crossFade(int duration) {

@@ -1,7 +1,7 @@
 package com.bumptech.glide.load.model;
 
 import android.net.Uri;
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import com.bumptech.glide.load.Options;
 import java.io.InputStream;
 import java.util.Arrays;
@@ -11,7 +11,7 @@ import java.util.Set;
 
 /**
  * Handles http/https Uris by delegating to the {@link ModelLoader} for {@link
- * com.bumptech.glide.load.model.GlideUrl GlideUrls}.
+ * GlideUrl GlideUrls}.
  *
  * @param <Data> The type of data this Loader will obtain for a {@link Uri}.
  */
@@ -39,7 +39,7 @@ public class UrlUriLoader<Data> implements ModelLoader<Uri, Data> {
   }
 
   /**
-   * Loads {@link java.io.InputStream InputStreams} from {@link android.net.Uri Uris} with http or
+   * Loads {@link InputStream InputStreams} from {@link Uri Uris} with http or
    * https schemes.
    */
   public static class StreamFactory implements ModelLoaderFactory<Uri, InputStream> {

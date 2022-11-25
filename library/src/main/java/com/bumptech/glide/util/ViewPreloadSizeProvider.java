@@ -2,8 +2,8 @@ package com.bumptech.glide.util;
 
 import android.graphics.drawable.Drawable;
 import android.view.View;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.bumptech.glide.ListPreloader;
 import com.bumptech.glide.request.target.CustomViewTarget;
 import com.bumptech.glide.request.target.SizeReadyCallback;
@@ -11,8 +11,8 @@ import com.bumptech.glide.request.transition.Transition;
 import java.util.Arrays;
 
 /**
- * A {@link com.bumptech.glide.ListPreloader.PreloadSizeProvider} that will extract the preload size
- * from a given {@link android.view.View}.
+ * A {@link ListPreloader.PreloadSizeProvider} that will extract the preload size
+ * from a given {@link View}.
  *
  * @param <T> The type of the model the size should be provided for.
  */
@@ -27,7 +27,7 @@ public class ViewPreloadSizeProvider<T>
 
   /**
    * Constructor that does nothing by default and requires users to call {@link
-   * #setView(android.view.View)} when a View is available to registerComponents the dimensions
+   * #setView(View)} when a View is available to registerComponents the dimensions
    * returned by this class.
    */
   public ViewPreloadSizeProvider() {
@@ -35,7 +35,7 @@ public class ViewPreloadSizeProvider<T>
   }
 
   /**
-   * Constructor that will extract the preload size from a given {@link android.view.View}.
+   * Constructor that will extract the preload size from a given {@link View}.
    *
    * @param view A not null View the size will be extracted from async using an {@link
    *     android.view.ViewTreeObserver .OnPreDrawListener}
@@ -64,7 +64,7 @@ public class ViewPreloadSizeProvider<T>
   }
 
   /**
-   * Sets the {@link android.view.View} the size will be extracted.
+   * Sets the {@link View} the size will be extracted.
    *
    * <p>Note - only the first call to this method will be obeyed, subsequent requests will be
    * ignored.

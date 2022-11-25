@@ -1,7 +1,7 @@
 package com.bumptech.glide.load;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import com.bumptech.glide.load.engine.Resource;
 import java.nio.charset.Charset;
 import java.security.MessageDigest;
@@ -9,14 +9,14 @@ import java.security.MessageDigest;
 /**
  * A class for performing an arbitrary transformation on a resource that implements {@link
  * #equals(Object)} and {@link #hashCode()}} to identify the transformation in the memory cache and
- * {@link #updateDiskCacheKey(java.security.MessageDigest)}} to identify the transformation in disk
+ * {@link #updateDiskCacheKey(MessageDigest)}} to identify the transformation in disk
  * caches.
  *
  * <p>Using the fully qualified class name as a static final {@link String} (not {@link
  * Class#getName()} to avoid proguard obfuscation) is an easy way to implement {@link
- * #updateDiskCacheKey(java.security.MessageDigest)}} correctly. If additional arguments are
+ * #updateDiskCacheKey(MessageDigest)}} correctly. If additional arguments are
  * required they can be passed in to the constructor of the {@code Transformation} and then used to
- * update the {@link java.security.MessageDigest} passed in to {@link
+ * update the {@link MessageDigest} passed in to {@link
  * #updateDiskCacheKey(MessageDigest)}. If arguments are primitive types, they can typically easily
  * be serialized using {@link java.nio.ByteBuffer}. {@link String} types can be serialized with
  * {@link String#getBytes(Charset)} using the constant {@link #CHARSET}.
@@ -39,7 +39,7 @@ public interface Transformation<T> extends Key {
    * copied into the transformed resource.
    *
    * <p>If a Transformation is updated, {@link #equals(Object)}, {@link #hashCode()}, and {@link
-   * #updateDiskCacheKey(java.security.MessageDigest)} should all change. If you're using a simple
+   * #updateDiskCacheKey(MessageDigest)} should all change. If you're using a simple
    * String key an easy way to do this is to append a version number to your key. Failing to do so
    * will mean users may see images loaded from cache that had the old version of the Transformation
    * applied. Changing the return values of those methods will ensure that the cache key has changed
@@ -47,7 +47,7 @@ public interface Transformation<T> extends Key {
    *
    * <p>During development you may need to either using {@link
    * com.bumptech.glide.load.engine.DiskCacheStrategy#NONE} or make sure {@link
-   * #updateDiskCacheKey(java.security.MessageDigest)} changes each time you make a change to the
+   * #updateDiskCacheKey(MessageDigest)} changes each time you make a change to the
    * Transformation. Otherwise the resource you request may be loaded from disk cache and your
    * Transformation may not be called.
    *

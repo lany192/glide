@@ -1,7 +1,7 @@
 package com.bumptech.glide.util;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -12,7 +12,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.util.concurrent.atomic.AtomicReference;
 
-/** Utilities for interacting with {@link java.nio.ByteBuffer}s. */
+/** Utilities for interacting with {@link ByteBuffer}s. */
 @SuppressWarnings({"unused", "WeakerAccess"}) // Public API
 public final class ByteBufferUtil {
   // 16 Kb

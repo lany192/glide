@@ -1,7 +1,7 @@
 package com.bumptech.glide.provider;
 
-import androidx.annotation.Nullable;
-import androidx.collection.ArrayMap;
+import android.support.annotation.Nullable;
+import android.support.v4.util.ArrayMap;
 import com.bumptech.glide.load.ResourceDecoder;
 import com.bumptech.glide.load.engine.DecodePath;
 import com.bumptech.glide.load.engine.LoadPath;
@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * Maintains a cache of data, resource, and transcode classes to available {@link
- * com.bumptech.glide.load.engine.LoadPath}s capable of decoding with the requested types.
+ * LoadPath}s capable of decoding with the requested types.
  */
 public class LoadPathCache {
   private static final LoadPath<?, ?, ?> NO_PATHS_SIGNAL =

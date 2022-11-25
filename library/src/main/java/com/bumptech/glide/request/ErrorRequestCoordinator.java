@@ -1,7 +1,7 @@
 package com.bumptech.glide.request;
 
-import androidx.annotation.GuardedBy;
-import androidx.annotation.Nullable;
+import android.support.annotation.GuardedBy;
+import android.support.annotation.Nullable;
 
 /**
  * Runs a single primary {@link Request} until it completes and then a fallback error request only

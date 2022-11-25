@@ -1,11 +1,11 @@
 package com.bumptech.glide.util;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.bumptech.glide.ListPreloader;
 
 /**
- * A {@link com.bumptech.glide.ListPreloader.PreloadSizeProvider} with a fixed width and height.
+ * A {@link ListPreloader.PreloadSizeProvider} with a fixed width and height.
  *
  * @param <T> The type of the model the size should be provided for.
  */

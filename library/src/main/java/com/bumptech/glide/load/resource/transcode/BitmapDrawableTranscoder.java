@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.bumptech.glide.load.Options;
 import com.bumptech.glide.load.engine.Resource;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
@@ -13,8 +13,8 @@ import com.bumptech.glide.load.resource.bitmap.LazyBitmapDrawableResource;
 import com.bumptech.glide.util.Preconditions;
 
 /**
- * An {@link com.bumptech.glide.load.resource.transcode.ResourceTranscoder} that converts {@link
- * android.graphics.Bitmap}s into {@link android.graphics.drawable.BitmapDrawable}s.
+ * An {@link ResourceTranscoder} that converts {@link
+ * Bitmap}s into {@link BitmapDrawable}s.
  */
 public class BitmapDrawableTranscoder implements ResourceTranscoder<Bitmap, BitmapDrawable> {
   private final Resources resources;

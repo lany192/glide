@@ -31,7 +31,7 @@ final class DecodeHelper<Transcode> {
   private int width;
   private int height;
   private Class<?> resourceClass;
-  private DecodeJob.DiskCacheProvider diskCacheProvider;
+  private DiskCacheProvider diskCacheProvider;
   private Options options;
   private Map<Class<?>, Transformation<?>> transformations;
   private Class<Transcode> transcodeClass;

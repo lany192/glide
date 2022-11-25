@@ -1,6 +1,6 @@
 package com.bumptech.glide.load.data;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import com.bumptech.glide.load.engine.bitmap_recycle.ArrayPool;
 import com.bumptech.glide.load.resource.bitmap.RecyclableBufferedInputStream;
 import com.bumptech.glide.util.Synthetic;
@@ -42,8 +42,8 @@ public final class InputStreamRewinder implements DataRewinder<InputStream> {
   }
 
   /**
-   * Factory for producing {@link com.bumptech.glide.load.data.InputStreamRewinder}s from {@link
-   * java.io.InputStream}s.
+   * Factory for producing {@link InputStreamRewinder}s from {@link
+   * InputStream}s.
    */
   public static final class Factory implements DataRewinder.Factory<InputStream> {
     private final ArrayPool byteArrayPool;

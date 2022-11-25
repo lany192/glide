@@ -1,7 +1,7 @@
 package com.bumptech.glide.load.resource.gif;
 
 import android.util.Log;
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import com.bumptech.glide.load.ImageHeaderParser;
 import com.bumptech.glide.load.ImageHeaderParser.ImageType;
 import com.bumptech.glide.load.ImageHeaderParserUtils;
@@ -16,8 +16,8 @@ import java.nio.ByteBuffer;
 import java.util.List;
 
 /**
- * A relatively inefficient decoder for {@link com.bumptech.glide.load.resource.gif.GifDrawable}
- * that converts {@link java.io.InputStream}s to {@link java.nio.ByteBuffer}s and then passes the
+ * A relatively inefficient decoder for {@link GifDrawable}
+ * that converts {@link InputStream}s to {@link ByteBuffer}s and then passes the
  * buffer to a wrapped decoder.
  */
 public class StreamGifDecoder implements ResourceDecoder<InputStream, GifDrawable> {

@@ -1,7 +1,7 @@
 package com.bumptech.glide.load;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import com.bumptech.glide.load.engine.Resource;
 import java.security.MessageDigest;
 import java.util.Arrays;
@@ -10,7 +10,7 @@ import java.util.Collection;
 /**
  * A transformation that applies one or more transformations in iteration order to a resource.
  *
- * @param <T> The type of {@link com.bumptech.glide.load.engine.Resource} that will be transformed.
+ * @param <T> The type of {@link Resource} that will be transformed.
  */
 public class MultiTransformation<T> implements Transformation<T> {
   private final Collection<? extends Transformation<T>> transformations;

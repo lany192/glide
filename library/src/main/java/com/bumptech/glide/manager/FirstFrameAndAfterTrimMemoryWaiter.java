@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.content.ComponentCallbacks2;
 import android.content.res.Configuration;
 import android.os.Build;
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
+import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 
 @RequiresApi(Build.VERSION_CODES.O)
 final class FirstFrameAndAfterTrimMemoryWaiter implements FrameWaiter, ComponentCallbacks2 {

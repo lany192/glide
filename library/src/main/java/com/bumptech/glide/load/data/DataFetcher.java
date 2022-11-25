@@ -1,7 +1,7 @@
 package com.bumptech.glide.load.data;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.DataSource;
 
@@ -9,11 +9,11 @@ import com.bumptech.glide.load.DataSource;
  * Lazily retrieves data that can be used to load a resource.
  *
  * <p>A new instance is created per resource load by {@link
- * com.bumptech.glide.load.model.ModelLoader}. {@link #loadData(com.bumptech.glide.Priority,
- * com.bumptech.glide.load.data.DataFetcher.DataCallback)} may or may not be called for any given
+ * com.bumptech.glide.load.model.ModelLoader}. {@link #loadData(Priority,
+ * DataCallback)} may or may not be called for any given
  * load depending on whether or not the corresponding resource is cached. Cancel also may or may not
- * be called. If {@link #loadData(com.bumptech.glide.Priority,
- * com.bumptech.glide.load.data.DataFetcher.DataCallback)}} is called, then so {@link #cleanup()}
+ * be called. If {@link #loadData(Priority,
+ * DataCallback)}} is called, then so {@link #cleanup()}
  * will be called.
  *
  * @param <T> The type of data to be loaded (InputStream, byte[], File etc).
@@ -64,8 +64,8 @@ public interface DataFetcher<T> {
 
   /**
    * Cleanup or recycle any resources used by this data fetcher. This method will be called in a
-   * finally block after the data provided by {@link #loadData(com.bumptech.glide.Priority,
-   * com.bumptech.glide.load.data.DataFetcher.DataCallback)} has been decoded by the {@link
+   * finally block after the data provided by {@link #loadData(Priority,
+   * DataCallback)} has been decoded by the {@link
    * com.bumptech.glide.load.ResourceDecoder}.
    *
    * <p>Note - this method will be run on a background thread so blocking I/O is safe.
@@ -90,7 +90,7 @@ public interface DataFetcher<T> {
   @NonNull
   Class<T> getDataClass();
 
-  /** Returns the {@link com.bumptech.glide.load.DataSource} this fetcher will return data from. */
+  /** Returns the {@link DataSource} this fetcher will return data from. */
   @NonNull
   DataSource getDataSource();
 }

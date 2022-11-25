@@ -1,97 +1,52 @@
-apply plugin: 'com.android.library'
-
-if (!hasProperty('DISABLE_ERROR_PRONE')) {
-    apply plugin: "net.ltgt.errorprone"
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
 }
+android {
+    namespace 'com.bumptech.glide'
+    compileSdk 33
 
-tasks.withType(JavaCompile) {
-    options.fork = true
+    defaultConfig {
+        minSdk 16
+        targetSdk 26
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
-    api project(':third_party:gif_decoder')
-    api project(':third_party:disklrucache')
-    api project(':annotation')
-    api "androidx.fragment:fragment:${ANDROID_X_FRAGMENT_VERSION}"
-    api "androidx.vectordrawable:vectordrawable-animated:${ANDROID_X_VECTOR_DRAWABLE_ANIMATED_VERSION}"
-    api "androidx.exifinterface:exifinterface:${ANDROID_X_EXIF_INTERFACE_VERSION}"
-    api "androidx.tracing:tracing:${ANDROID_X_TRACING_VERSION}"
-    compileOnly "androidx.appcompat:appcompat:${ANDROID_X_APPCOMPAT_VERSION}"
-
-    if (project.plugins.hasPlugin('net.ltgt.errorprone')) {
-        errorprone "com.google.errorprone:error_prone_core:${ERROR_PRONE_VERSION}"
-    }
-
-    testImplementation "androidx.appcompat:appcompat:${ANDROID_X_APPCOMPAT_VERSION}"
-    testImplementation project(':testutil')
-    testImplementation "com.google.guava:guava-testlib:${GUAVA_TESTLIB_VERSION}"
-    testImplementation "com.google.truth:truth:${TRUTH_VERSION}"
-    testImplementation "junit:junit:${JUNIT_VERSION}"
-    testImplementation "org.mockito:mockito-core:${MOCKITO_VERSION}"
-    testImplementation "org.robolectric:robolectric:${ROBOLECTRIC_VERSION}"
-    testImplementation "com.squareup.okhttp3:mockwebserver:${MOCKWEBSERVER_VERSION}"
-    testImplementation "androidx.test:core:${ANDROID_X_TEST_CORE_VERSION}"
-    testImplementation "androidx.test.ext:junit:${ANDROID_X_TEST_JUNIT_VERSION}"
-    testImplementation "androidx.test:runner:${ANDROID_X_TEST_RUNNER_VERSION}"
+    api 'com.github.bumptech.glide:annotations:4.14.2'
+    compileOnly 'com.android.support:appcompat-v7:28.0.0'
+//    compileOnly 'com.android.support:exifinterface:28.0.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
 
-if (project.plugins.hasPlugin('net.ltgt.errorprone')) {
-    tasks.withType(JavaCompile) {
-        options.errorprone.disable(
-            // It's often useful to track individual objects when debugging
-            // object pooling.
-            "ObjectToString",
-            // Doesn't apply when we can't use lambadas.
-            "UnnecessaryAnonymousClass",
-            // TODO(judds): Fix these and re-enable this check
-            "TypeNameShadowing",
-            "UndefinedEquals",
-            "UnnecessaryParentheses",
-            "UnusedVariable",
-            "EqualsGetClass",
-            "LockNotBeforeTry")
-    }
-}
+group = 'com.bumptech.glide'
+version = '1.0.0'
 
-android {
-    compileSdk COMPILE_SDK_VERSION as int
-
-    defaultConfig {
-        minSdk MIN_SDK_VERSION as int
-        targetSdk TARGET_SDK_VERSION as int
-        versionName VERSION_NAME as String
-        consumerProguardFiles 'proguard-rules.txt'
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
-    }
-}
-
-// Change the name to make it a little more obvious where the main library
-// documentation has gone. Using a capital letter happens to make this first in
-// the list too...
 afterEvaluate {
-    dokkaHtmlPartial.configure {
-        dokkaSourceSets {
-            named("main") {
-                moduleName.set("Glide")
+    publishing {
+        publications {
+            release(MavenPublication) {
+                groupId = 'com.bumptech.glide'
+                version = '1.0.0'
+                from components.release
             }
         }
     }
 }
 
-check.dependsOn(':library:pmd:pmd')
-check.dependsOn(':library:test:check')
-
-// Used in pmd and findbugs subprojects.
-@SuppressWarnings("GroovyUnusedDeclaration")
-def classPathForQuality() {
-    return files(
-            android.bootClasspath,
-            project.android.libraryVariants.collect { it.javaCompile.classpath }
-    )
-}
-
-apply from: "${rootProject.projectDir}/scripts/upload.gradle"

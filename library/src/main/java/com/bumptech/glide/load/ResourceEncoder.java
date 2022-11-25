@@ -1,6 +1,6 @@
 package com.bumptech.glide.load;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import com.bumptech.glide.load.engine.Resource;
 
 /**

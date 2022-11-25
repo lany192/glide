@@ -3,9 +3,9 @@ package com.bumptech.glide.load.resource.gif;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.Log;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.VisibleForTesting;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.VisibleForTesting;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.gifdecoder.GifDecoder;
 import com.bumptech.glide.gifdecoder.GifHeader;
@@ -29,8 +29,8 @@ import java.util.List;
 import java.util.Queue;
 
 /**
- * An {@link com.bumptech.glide.load.ResourceDecoder} that decodes {@link
- * com.bumptech.glide.load.resource.gif.GifDrawable} from {@link java.io.InputStream} data.
+ * An {@link ResourceDecoder} that decodes {@link
+ * GifDrawable} from {@link java.io.InputStream} data.
  */
 public class ByteBufferGifDecoder implements ResourceDecoder<ByteBuffer, GifDrawable> {
   private static final String TAG = "BufferGifDecoder";

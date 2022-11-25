@@ -3,11 +3,11 @@ package com.bumptech.glide.request.target;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 /**
  * A factory responsible for producing the correct type of {@link
- * com.bumptech.glide.request.target.Target} for a given {@link android.view.View} subclass.
+ * Target} for a given {@link android.view.View} subclass.
  */
 public class ImageViewTargetFactory {
   @NonNull

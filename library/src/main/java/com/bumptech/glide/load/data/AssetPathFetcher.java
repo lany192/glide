@@ -2,14 +2,14 @@ package com.bumptech.glide.load.data;
 
 import android.content.res.AssetManager;
 import android.util.Log;
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.DataSource;
 import java.io.IOException;
 
 /**
  * An abstract class for obtaining data for an asset path using an {@link
- * android.content.res.AssetManager}.
+ * AssetManager}.
  *
  * @param <T> The type of data obtained from the asset path (InputStream, FileDescriptor etc).
  */
@@ -63,7 +63,7 @@ public abstract class AssetPathFetcher<T> implements DataFetcher<T> {
   }
 
   /**
-   * Opens the given asset path with the given {@link android.content.res.AssetManager} and returns
+   * Opens the given asset path with the given {@link AssetManager} and returns
    * the concrete data type returned by the AssetManager.
    *
    * @param assetManager An AssetManager to use to open the given path.

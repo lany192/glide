@@ -2,8 +2,8 @@ package com.bumptech.glide.load.data;
 
 import android.text.TextUtils;
 import android.util.Log;
-import androidx.annotation.NonNull;
-import androidx.annotation.VisibleForTesting;
+import android.support.annotation.NonNull;
+import android.support.annotation.VisibleForTesting;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.HttpException;
@@ -19,7 +19,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Map;
 
-/** A DataFetcher that retrieves an {@link java.io.InputStream} for a Url. */
+/** A DataFetcher that retrieves an {@link InputStream} for a Url. */
 public class HttpUrlFetcher implements DataFetcher<InputStream> {
   private static final String TAG = "HttpUrlFetcher";
   private static final int MAXIMUM_REDIRECTS = 5;

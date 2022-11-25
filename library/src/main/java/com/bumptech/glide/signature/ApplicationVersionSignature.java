@@ -4,24 +4,24 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.util.Log;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.VisibleForTesting;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.VisibleForTesting;
 import com.bumptech.glide.load.Key;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 /**
- * A utility class for obtaining a {@link com.bumptech.glide.load.Key} signature containing the
- * application version name using {@link android.content.pm.PackageInfo#versionCode}.
+ * A utility class for obtaining a {@link Key} signature containing the
+ * application version name using {@link PackageInfo#versionCode}.
  */
 public final class ApplicationVersionSignature {
   private static final String TAG = "AppVersionSignature";
   private static final ConcurrentMap<String, Key> PACKAGE_NAME_TO_KEY = new ConcurrentHashMap<>();
 
   /**
-   * Returns the signature {@link com.bumptech.glide.load.Key} for version code of the Application
+   * Returns the signature {@link Key} for version code of the Application
    * of the given Context.
    */
   @NonNull

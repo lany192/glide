@@ -1,6 +1,6 @@
 package com.bumptech.glide.util;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;

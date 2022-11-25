@@ -2,8 +2,8 @@ package com.bumptech.glide.load.resource.bitmap;
 
 import android.graphics.Bitmap;
 import android.util.Log;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.bumptech.glide.load.EncodeStrategy;
 import com.bumptech.glide.load.Option;
 import com.bumptech.glide.load.Options;
@@ -20,15 +20,15 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 /**
- * An {@link com.bumptech.glide.load.ResourceEncoder} that writes {@link android.graphics.Bitmap}s
- * to {@link java.io.OutputStream}s.
+ * An {@link ResourceEncoder} that writes {@link Bitmap}s
+ * to {@link OutputStream}s.
  *
- * <p>{@link android.graphics.Bitmap}s that return true from {@link android.graphics.Bitmap#hasAlpha
- * ()}} are written using {@link android.graphics.Bitmap.CompressFormat#PNG} to preserve alpha and
- * all other bitmaps are written using {@link android.graphics.Bitmap.CompressFormat#JPEG}.
+ * <p>{@link Bitmap}s that return true from {@link Bitmap#hasAlpha
+ * ()}} are written using {@link Bitmap.CompressFormat#PNG} to preserve alpha and
+ * all other bitmaps are written using {@link Bitmap.CompressFormat#JPEG}.
  *
- * @see android.graphics.Bitmap#compress(android.graphics.Bitmap.CompressFormat, int,
- *     java.io.OutputStream)
+ * @see Bitmap#compress(Bitmap.CompressFormat, int,
+ *     OutputStream)
  */
 public class BitmapEncoder implements ResourceEncoder<Bitmap> {
   /**
@@ -40,11 +40,11 @@ public class BitmapEncoder implements ResourceEncoder<Bitmap> {
       Option.memory("com.bumptech.glide.load.resource.bitmap.BitmapEncoder.CompressionQuality", 90);
 
   /**
-   * An {@link android.graphics.Bitmap.CompressFormat} option used as the format to encode the
-   * {@link android.graphics.Bitmap}.
+   * An {@link Bitmap.CompressFormat} option used as the format to encode the
+   * {@link Bitmap}.
    *
-   * <p>Defaults to {@link android.graphics.Bitmap.CompressFormat#JPEG} for images without alpha and
-   * {@link android.graphics.Bitmap.CompressFormat#PNG} for images with alpha.
+   * <p>Defaults to {@link Bitmap.CompressFormat#JPEG} for images without alpha and
+   * {@link Bitmap.CompressFormat#PNG} for images with alpha.
    */
   public static final Option<Bitmap.CompressFormat> COMPRESSION_FORMAT =
       Option.memory("com.bumptech.glide.load.resource.bitmap.BitmapEncoder.CompressionFormat");

@@ -1,16 +1,17 @@
 package com.bumptech.glide.util.pool;
 
 import android.util.Log;
-import androidx.annotation.NonNull;
-import androidx.core.util.Pools.Pool;
-import androidx.core.util.Pools.SimplePool;
-import androidx.core.util.Pools.SynchronizedPool;
+import android.support.annotation.NonNull;
+import android.support.v4.util.Pools.Pool;
+import android.support.v4.util.Pools.SimplePool;
+import android.support.v4.util.Pools.SynchronizedPool;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Provides implementations of {@link Pool} never return {@code null}, log when new instances are
- * created, and that can use the {@link com.bumptech.glide.util.pool.FactoryPools.Poolable}
+ * created, and that can use the {@link Poolable}
  * interface to ensure objects aren't used while inside the pool.
  */
 public final class FactoryPools {

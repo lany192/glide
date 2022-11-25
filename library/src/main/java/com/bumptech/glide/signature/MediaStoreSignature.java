@@ -1,7 +1,7 @@
 package com.bumptech.glide.signature;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.bumptech.glide.load.Key;
 import java.nio.ByteBuffer;
 import java.security.MessageDigest;
@@ -16,7 +16,7 @@ public class MediaStoreSignature implements Key {
   private final int orientation;
 
   /**
-   * Constructor for {@link com.bumptech.glide.signature.MediaStoreSignature}.
+   * Constructor for {@link MediaStoreSignature}.
    *
    * @param mimeType The mime type of the media store media. Ok to default to empty string "". See
    *     {@link android.provider.MediaStore.Images.ImageColumns#MIME_TYPE} or {@link
