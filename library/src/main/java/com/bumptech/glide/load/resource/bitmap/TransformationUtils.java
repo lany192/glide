@@ -12,13 +12,14 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.graphics.Shader;
-import android.media.ExifInterface;
+
 import android.os.Build;
 import android.util.Log;
 import android.support.annotation.NonNull;
 import android.support.annotation.VisibleForTesting;
 import com.bumptech.glide.load.Transformation;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
+import com.bumptech.glide.util.media.ExifInterface;
 import com.bumptech.glide.util.Preconditions;
 import com.bumptech.glide.util.Synthetic;
 import java.util.Arrays;
